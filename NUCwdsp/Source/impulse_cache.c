@@ -169,7 +169,7 @@ void add_impulse_to_cache(size_t bucket, HASH_T hash, int N, double* impulse)
 	_cache_counts[bucket]++;
 }
 
-PORT
+ 
 int save_impulse_cache(const char* path)
 {
 	if (!_run) return 0;
@@ -198,7 +198,7 @@ int save_impulse_cache(const char* path)
 	return 0;
 }
 
-PORT
+ 
 int read_impulse_cache(const char* path)
 {
 	if (!_run) return 0;
@@ -244,7 +244,7 @@ int read_impulse_cache(const char* path)
 	return 0;
 }
 
-PORT
+ 
 void use_impulse_cache(int use) 
 {
 	EnterCriticalSection(&_cs_use_cache);
@@ -252,7 +252,7 @@ void use_impulse_cache(int use)
 	LeaveCriticalSection(&_cs_use_cache);
 }
 
-PORT
+ 
 void init_impulse_cache(int use)
 {
 	//InitializeCriticalSection(&_cs_use_cache);
@@ -265,7 +265,7 @@ void init_impulse_cache(int use)
 	_run = 1;
 }
 
-PORT
+ 
 void destroy_impulse_cache(void)
 {
 	_run = 0;

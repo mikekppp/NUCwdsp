@@ -242,7 +242,7 @@ void setSize_fmd (FMD a, int size)
 *																										*
 ********************************************************************************************************/
 
-PORT
+ 
 void SetRXAFMDeviation (int channel, double deviation)
 {
 	FMD a;
@@ -253,7 +253,7 @@ void SetRXAFMDeviation (int channel, double deviation)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetRXACTCSSFreq (int channel, double freq)
 {
 	FMD a;
@@ -264,7 +264,7 @@ void SetRXACTCSSFreq (int channel, double freq)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetRXACTCSSRun (int channel, int run)
 {
 	FMD a;
@@ -275,7 +275,7 @@ void SetRXACTCSSRun (int channel, int run)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetRXAFMNCde (int channel, int nc)
 {
 	FMD a;
@@ -292,7 +292,7 @@ void SetRXAFMNCde (int channel, int nc)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetRXAFMMPde (int channel, int mp)
 {
 	FMD a;
@@ -304,7 +304,7 @@ void SetRXAFMMPde (int channel, int mp)
 	}
 }
 
-PORT
+ 
 void SetRXAFMNCaud (int channel, int nc)
 {
 	FMD a;
@@ -321,7 +321,7 @@ void SetRXAFMNCaud (int channel, int nc)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetRXAFMMPaud (int channel, int mp)
 {
 	FMD a;
@@ -333,7 +333,7 @@ void SetRXAFMMPaud (int channel, int mp)
 	}
 }
 
-PORT
+ 
 void SetRXAFMLimRun (int channel, int run)
 {
 	FMD a;
@@ -346,7 +346,7 @@ void SetRXAFMLimRun (int channel, int run)
 	LeaveCriticalSection(&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetRXAFMLimGain (int channel, double gaindB)
 {
 	double gain = pow(10.0, gaindB / 20.0);
@@ -361,7 +361,7 @@ void SetRXAFMLimGain (int channel, double gaindB)
 	LeaveCriticalSection(&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetRXAFMAFFilter(int channel, double low, double high)
 {
 	FMD a = rxa[channel].fmd.p;

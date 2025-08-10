@@ -212,7 +212,7 @@ double* icfir_impulse (int N, int DD, int R, int Pairs, double runrate, double c
 *																										*
 ********************************************************************************************************/
 
-//PORT void
+//  void
 //SetTXAICFIRRun (int channel, int run)
 //{
 //	EnterCriticalSection(&ch[channel].csDSP);

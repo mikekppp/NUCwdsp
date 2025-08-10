@@ -600,7 +600,7 @@ void stitch(int disp)
 	}
 }
 
-DWORD WINAPI spectra (void *pargs)
+long spectra (void *pargs)
 {
 	int i, j;
 	int disp = ((int)(uintptr_t)pargs) >> 12;
@@ -762,7 +762,7 @@ void calc_dmb(int disp, int size)
 //				to which DDC is tuned.  Example, LSB:  '-300.0'.
 // tau:			Metering time constant in seconds.  E.g., '0.5'.
 // frame_rate:	Display frame_rate currently in use.  E.g., '60'.
-PORT
+
 void SetupDetectMaxBin(int run, int disp, int ss, int LO, double rate, 
 	double fLow, double fHigh, double tau, int frame_rate)
 {
@@ -817,7 +817,7 @@ void DetectMaxBin(int disp, int ss, int LO)
 
 // Call from console, for each 'disp' for which this function is desired.
 // Always returns the value from the most recent display frame.
-PORT
+
 double GetDetectMaxBin(int disp)
 {
 	DP a = pdisp[disp];
@@ -834,7 +834,7 @@ double GetDetectMaxBin(int disp)
 *																										*
 ********************************************************************************************************/
 
-DWORD WINAPI Cspectra (void *pargs)
+long Cspectra (void *pargs)
 {
 	int i, j;
 	int disp = ((int)(uintptr_t)pargs) >> 12;
@@ -1055,7 +1055,7 @@ int build_interpolants(int disp, int set, int n, int m, double *x, double (*y)[d
     return 0;
 }
 
-void __cdecl sendbuf(void *arg)
+void sendbuf(void *arg)
 {
 	DP a = pdisp[(int)(uintptr_t)arg];
 	while(!a->end_dispatcher)
@@ -1097,7 +1097,7 @@ void CalcBandwidthNormalization (DP a)
 	a->norm_oneHz = 10.0 * mlog10 (1.0 / bin_width);
 }
 
-PORT    
+    
 void ResetPixelBuffers(int disp)
 {
     //[2.10.2]MW0LGE reset all the pixel and average buffers
@@ -1169,7 +1169,7 @@ void ResetPixelBuffers(int disp)
 	LeaveCriticalSection(&a->SetAnalyzerSection);
 }
 
-PORT    
+    
 void SetAnalyzer (	int disp,			// display identifier
 					int n_pixout,		// pixel output identifier
 					int n_fft,			// number of LO frequencies = number of ffts used in elimination
@@ -1315,7 +1315,7 @@ void SetAnalyzer (	int disp,			// display identifier
 	LeaveCriticalSection(&a->SetAnalyzerSection);
 }
 
-PORT
+
 void XCreateAnalyzer(	int disp,
 						int *success,
 						int m_size,
@@ -1333,12 +1333,12 @@ void XCreateAnalyzer(	int disp,
 	a->max_num_fft = m_num_fft;
 	a->max_stitch = m_stitch;
 	
-	a->pnum_threads = (LONG*) malloc0 (sizeof (LONG));
+	a->pnum_threads = (long *)malloc0 (sizeof(long));
 
 	for (i = 0; i < a->max_stitch; i++)
 		for (j = 0; j < a->max_num_fft; j++)
 		{
-			a->hSnapEvent[i][j] = CreateEvent(NULL, FALSE, FALSE, TEXT("snap"));
+			a->hSnapEvent[i][j] = CreateEvent(NULL, FALSE, FALSE, "snap");
 			a->snap[i][j] = 0;
 		}
 	InitializeCriticalSectionAndSpinCount(&a->ResampleSection, 0);
@@ -1421,7 +1421,7 @@ void XCreateAnalyzer(	int disp,
 	*success = 0;
 }
 
-PORT   
+   
 void DestroyAnalyzer(int disp)
 {
 	DP a = pdisp[disp];
@@ -1501,7 +1501,7 @@ void DestroyAnalyzer(int disp)
 	_aligned_free (a);
 }
 
-PORT   
+   
 void GetPixels	(	int disp,
 					int pixout,
 					dOUTREAL *pix,		//if new pixel values avail, copies to pix and sets flag = 1
@@ -1523,7 +1523,7 @@ void GetPixels	(	int disp,
 		*flag = 0;
 }
 
-PORT
+
 void SnapSpectrum(	int disp,
 					int ss,
 					int LO,
@@ -1535,12 +1535,12 @@ void SnapSpectrum(	int disp,
 	WaitForSingleObject(a->hSnapEvent[ss][LO], INFINITE);
 }
 
-PORT
+
 void SnapSpectrumTimeout(	int disp,
 							int ss,
 							int LO,
 							double* snap_buff,
-							DWORD timeout,
+							long timeout,
 							int* flag)
 {
 	DP a = pdisp[disp];
@@ -1566,7 +1566,7 @@ int calcompare (const void * a, const void * b)
 		return 1;
 }
 
-PORT   
+   
 void SetCalibration (	int disp,
 						int set_num,				//identifier for this calibration data set
 						int n_points,				//number of calibration points in the set
@@ -1598,7 +1598,7 @@ void SetCalibration (	int disp,
 	a->cal_changed = 1;
 }
 
-PORT   
+   
 void OpenBuffer(int disp, int ss, int LO, void **Ipointer, void **Qpointer)
 {
 	DP a = pdisp[disp];
@@ -1608,7 +1608,7 @@ void OpenBuffer(int disp, int ss, int LO, void **Ipointer, void **Qpointer)
 	LeaveCriticalSection(&a->SetAnalyzerSection);
 }
 
-PORT   
+   
 void CloseBuffer(int disp, int ss, int LO)
 {
 	DP a = pdisp[disp];
@@ -1637,7 +1637,7 @@ void CloseBuffer(int disp, int ss, int LO)
 		LeaveCriticalSection(&a->SetAnalyzerSection);
 }
 
-PORT
+
 void Spectrum(int disp, int ss, int LO, dINREAL* pI, dINREAL* pQ)
 {
 	dINREAL *Ipointer;
@@ -1676,7 +1676,7 @@ void Spectrum(int disp, int ss, int LO, dINREAL* pI, dINREAL* pQ)
 		LeaveCriticalSection(&a->SetAnalyzerSection);
 }
 
-PORT
+
 void Spectrum2(int run, int disp, int ss, int LO, dINREAL* pbuff)
 {
 	if (run)
@@ -1722,7 +1722,7 @@ void Spectrum2(int run, int disp, int ss, int LO, dINREAL* pbuff)
 	}
 }
 
-PORT
+
 void Spectrum0(int run, int disp, int ss, int LO, double* pbuff)
 {
 	if (run)
@@ -1768,7 +1768,7 @@ void Spectrum0(int run, int disp, int ss, int LO, double* pbuff)
 	}
 }
 
-PORT
+
 void SetDisplayDetectorMode (int disp, int pixout, int mode)
 {
 	DP a = pdisp[disp];
@@ -1780,7 +1780,7 @@ void SetDisplayDetectorMode (int disp, int pixout, int mode)
 	}
 }
 
-PORT
+
 void SetDisplayAverageMode (int disp, int pixout, int mode)
 {
 	int i;
@@ -1812,7 +1812,7 @@ void SetDisplayAverageMode (int disp, int pixout, int mode)
 	}
 }
 
-PORT
+
 void SetDisplayNumAverage (int disp, int pixout, int num)
 {
 	DP a = pdisp[disp];
@@ -1827,7 +1827,7 @@ void SetDisplayNumAverage (int disp, int pixout, int num)
 	}
 }
 
-PORT
+
 void SetDisplayAvBackmult (int disp, int pixout, double mult)
 {
 	DP a = pdisp[disp];
@@ -1839,7 +1839,7 @@ void SetDisplayAvBackmult (int disp, int pixout, double mult)
 	}
 }
 
-PORT
+
 void SetDisplaySampleRate (int disp, int rate)
 {
 	DP a = pdisp[disp];
@@ -1852,7 +1852,7 @@ void SetDisplaySampleRate (int disp, int rate)
 	}
 }
 
-PORT
+
 void SetDisplayNormOneHz (int disp, int pixout, int norm)
 {
 	DP a = pdisp[disp];
@@ -1864,7 +1864,7 @@ void SetDisplayNormOneHz (int disp, int pixout, int norm)
 	}
 }
 
-PORT
+
 double GetDisplayENB (int disp)
 {
 	DP a = pdisp[disp];

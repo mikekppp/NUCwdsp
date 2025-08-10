@@ -138,7 +138,7 @@ void setSize_osctrl (OSCTRL a, int size)
 *																										*
 ********************************************************************************************************/
 
-PORT
+ 
 void SetTXAosctrlRun (int channel, int run)
 {
 	if (txa[channel].osctrl.p->run != run)

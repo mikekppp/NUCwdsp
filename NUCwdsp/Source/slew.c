@@ -179,7 +179,7 @@ void setSize_uslew (USLEW a, int size)
 *																										*
 ********************************************************************************************************/
 
-PORT
+ 
 void SetTXAuSlewTime (int channel, double time)
 {
     // NOTE:  'time' is in seconds

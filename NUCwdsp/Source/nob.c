@@ -51,7 +51,7 @@ void initBlanker(ANB a)
     memset(a->dline, 0, a->dline_size * sizeof(complex));
 }
 
-PORT
+ 
 ANB create_anb	(
 	int run,
 	int buffsize,
@@ -86,7 +86,7 @@ ANB create_anb	(
 	return a;
 }
 
-PORT
+ 
 void destroy_anb (ANB a)
 { 
 	DeleteCriticalSection (&a->cs_update);
@@ -96,7 +96,7 @@ void destroy_anb (ANB a)
 	_aligned_free (a);
 }
 
-PORT
+ 
 void flush_anb (ANB a)
 {
 	EnterCriticalSection (&a->cs_update);
@@ -104,7 +104,7 @@ void flush_anb (ANB a)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+ 
 void xanb (ANB a)
 {
     double scale;
@@ -214,7 +214,7 @@ void setSize_anb (ANB a, int size)
 // The following is an example to follow for properties in the event that this function is used inside
 // a channel.
 
-// PORT
+//  
 // void SetRXAANBRun (int channel, int run)
 // {
 //	 ANB a = rxa[channel].anb.p;
@@ -229,7 +229,7 @@ void setSize_anb (ANB a, int size)
 *																										*
 ********************************************************************************************************/
 
-PORT
+ 
 void pSetRCVRANBRun (ANB a, int run)
 {
 	EnterCriticalSection (&a->cs_update);
@@ -237,7 +237,7 @@ void pSetRCVRANBRun (ANB a, int run)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+ 
 void pSetRCVRANBBuffsize (ANB a, int size)
 {
 	EnterCriticalSection (&a->cs_update);
@@ -245,7 +245,7 @@ void pSetRCVRANBBuffsize (ANB a, int size)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+ 
 void pSetRCVRANBSamplerate (ANB a, int rate)
 {
 	EnterCriticalSection (&a->cs_update);
@@ -254,7 +254,7 @@ void pSetRCVRANBSamplerate (ANB a, int rate)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+ 
 void pSetRCVRANBTau (ANB a, double tau)
 {
 	EnterCriticalSection (&a->cs_update);
@@ -263,7 +263,7 @@ void pSetRCVRANBTau (ANB a, double tau)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+ 
 void pSetRCVRANBHangtime (ANB a, double time)
 {
 	EnterCriticalSection (&a->cs_update);
@@ -272,7 +272,7 @@ void pSetRCVRANBHangtime (ANB a, double time)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+ 
 void pSetRCVRANBAdvtime (ANB a, double time)
 {
 	EnterCriticalSection (&a->cs_update);
@@ -281,7 +281,7 @@ void pSetRCVRANBAdvtime (ANB a, double time)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+ 
 void pSetRCVRANBBacktau (ANB a, double tau)
 {
 	EnterCriticalSection (&a->cs_update);
@@ -290,7 +290,7 @@ void pSetRCVRANBBacktau (ANB a, double tau)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+ 
 void pSetRCVRANBThreshold (ANB a, double thresh)
 {
 	EnterCriticalSection (&a->cs_update);
@@ -305,9 +305,9 @@ void pSetRCVRANBThreshold (ANB a, double thresh)
 ********************************************************************************************************/
 
 #define MAX_EXT_ANBS	(32)						// maximum number of NOBs called from outside wdsp
-__declspec (align (16)) ANB panb[MAX_EXT_ANBS];		// array of pointers for NOBs used EXTERNAL to wdsp
+ANB panb[MAX_EXT_ANBS];		// array of pointers for NOBs used EXTERNAL to wdsp
 
-PORT
+ 
 void create_anbEXT	(
 	int id,
 	int run,
@@ -323,19 +323,19 @@ void create_anbEXT	(
 	panb[id] = create_anb (run, buffsize, 0, 0,samplerate, tau, hangtime, advtime, backtau, threshold);
 }
 
-PORT
+ 
 void destroy_anbEXT (int id)
 {
 	destroy_anb (panb[id]);
 }
 
-PORT
+ 
 void flush_anbEXT (int id)
 {
 	flush_anb (panb[id]);
 }
 
-PORT
+ 
 void xanbEXT (int id, double* in, double* out)
 {
 	ANB a = panb[id];
@@ -344,7 +344,7 @@ void xanbEXT (int id, double* in, double* out)
 	xanb (a);
 }
 
-PORT
+ 
 void SetEXTANBRun (int id, int run)
 {
 	ANB a = panb[id];
@@ -353,7 +353,7 @@ void SetEXTANBRun (int id, int run)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+ 
 void SetEXTANBBuffsize (int id, int size)
 {
 	ANB a = panb[id];
@@ -362,7 +362,7 @@ void SetEXTANBBuffsize (int id, int size)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+ 
 void SetEXTANBSamplerate (int id, int rate)
 {
 	ANB a = panb[id];
@@ -372,7 +372,7 @@ void SetEXTANBSamplerate (int id, int rate)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+ 
 void SetEXTANBTau (int id, double tau)
 {
 	ANB a = panb[id];
@@ -382,7 +382,7 @@ void SetEXTANBTau (int id, double tau)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+ 
 void SetEXTANBHangtime (int id, double time)
 {
 	ANB a = panb[id];
@@ -392,7 +392,7 @@ void SetEXTANBHangtime (int id, double time)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+ 
 void SetEXTANBAdvtime (int id, double time)
 {
 	ANB a = panb[id];
@@ -402,7 +402,7 @@ void SetEXTANBAdvtime (int id, double time)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+ 
 void SetEXTANBBacktau (int id, double tau)
 {
 	ANB a = panb[id];
@@ -412,7 +412,7 @@ void SetEXTANBBacktau (int id, double tau)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+ 
 void SetEXTANBThreshold (int id, double thresh)
 {
 	ANB a = panb[id];
@@ -427,7 +427,7 @@ void SetEXTANBThreshold (int id, double thresh)
 *																										*
 ********************************************************************************************************/
 
-PORT
+ 
 void xanbEXTF (int id, float *I, float *Q)
 {
 	int i;

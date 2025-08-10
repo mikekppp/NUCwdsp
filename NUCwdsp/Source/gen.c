@@ -555,7 +555,7 @@ void setSize_gen (GEN a, int size)
 
 // 'PreGen', gen0
 
-PORT
+ 
 void SetRXAPreGenRun (int channel, int run)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -563,7 +563,7 @@ void SetRXAPreGenRun (int channel, int run)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetRXAPreGenMode (int channel, int mode)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -571,7 +571,7 @@ void SetRXAPreGenMode (int channel, int mode)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetRXAPreGenToneMag (int channel, double mag)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -579,7 +579,7 @@ void SetRXAPreGenToneMag (int channel, double mag)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetRXAPreGenToneFreq (int channel, double freq)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -588,7 +588,7 @@ void SetRXAPreGenToneFreq (int channel, double freq)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetRXAPreGenNoiseMag (int channel, double mag)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -596,7 +596,7 @@ void SetRXAPreGenNoiseMag (int channel, double mag)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetRXAPreGenSweepMag (int channel, double mag)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -604,7 +604,7 @@ void SetRXAPreGenSweepMag (int channel, double mag)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetRXAPreGenSweepFreq (int channel, double freq1, double freq2)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -614,7 +614,7 @@ void SetRXAPreGenSweepFreq (int channel, double freq1, double freq2)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetRXAPreGenSweepRate (int channel, double rate)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -632,7 +632,7 @@ void SetRXAPreGenSweepRate (int channel, double rate)
 
 // 'PreGen', gen0
 
-PORT
+ 
 void SetTXAPreGenRun (int channel, int run)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -640,7 +640,7 @@ void SetTXAPreGenRun (int channel, int run)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAPreGenMode (int channel, int mode)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -648,7 +648,7 @@ void SetTXAPreGenMode (int channel, int mode)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAPreGenToneMag (int channel, double mag)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -656,7 +656,7 @@ void SetTXAPreGenToneMag (int channel, double mag)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAPreGenToneFreq (int channel, double freq)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -665,7 +665,7 @@ void SetTXAPreGenToneFreq (int channel, double freq)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAPreGenNoiseMag (int channel, double mag)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -673,7 +673,7 @@ void SetTXAPreGenNoiseMag (int channel, double mag)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAPreGenSweepMag (int channel, double mag)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -681,7 +681,7 @@ void SetTXAPreGenSweepMag (int channel, double mag)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAPreGenSweepFreq (int channel, double freq1, double freq2)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -691,7 +691,7 @@ void SetTXAPreGenSweepFreq (int channel, double freq1, double freq2)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAPreGenSweepRate (int channel, double rate)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -700,7 +700,7 @@ void SetTXAPreGenSweepRate (int channel, double rate)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAPreGenSawtoothMag (int channel, double mag)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -708,7 +708,7 @@ void SetTXAPreGenSawtoothMag (int channel, double mag)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAPreGenSawtoothFreq (int channel, double freq)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -717,7 +717,7 @@ void SetTXAPreGenSawtoothFreq (int channel, double freq)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAPreGenTriangleMag (int channel, double mag)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -725,7 +725,7 @@ void SetTXAPreGenTriangleMag (int channel, double mag)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAPreGenTriangleFreq (int channel, double freq)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -734,7 +734,7 @@ void SetTXAPreGenTriangleFreq (int channel, double freq)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAPreGenPulseMag (int channel, double mag)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -742,7 +742,7 @@ void SetTXAPreGenPulseMag (int channel, double mag)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAPreGenPulseFreq (int channel, double freq)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -751,7 +751,7 @@ void SetTXAPreGenPulseFreq (int channel, double freq)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAPreGenPulseDutyCycle (int channel, double dc)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -760,7 +760,7 @@ void SetTXAPreGenPulseDutyCycle (int channel, double dc)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAPreGenPulseToneFreq (int channel, double freq)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -769,7 +769,7 @@ void SetTXAPreGenPulseToneFreq (int channel, double freq)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAPreGenPulseTransition (int channel, double transtime)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -780,7 +780,7 @@ void SetTXAPreGenPulseTransition (int channel, double transtime)
 
 // 'PostGen', gen1
 
-PORT
+ 
 void SetTXAPostGenRun (int channel, int run)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -788,7 +788,7 @@ void SetTXAPostGenRun (int channel, int run)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAPostGenMode (int channel, int mode)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -796,7 +796,7 @@ void SetTXAPostGenMode (int channel, int mode)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAPostGenToneMag (int channel, double mag)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -804,7 +804,7 @@ void SetTXAPostGenToneMag (int channel, double mag)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAPostGenToneFreq (int channel, double freq)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -813,7 +813,7 @@ void SetTXAPostGenToneFreq (int channel, double freq)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAPostGenTTMag (int channel, double mag1, double mag2)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -822,7 +822,7 @@ void SetTXAPostGenTTMag (int channel, double mag1, double mag2)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAPostGenTTFreq (int channel, double freq1, double freq2)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -832,7 +832,7 @@ void SetTXAPostGenTTFreq (int channel, double freq1, double freq2)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAPostGenSweepMag (int channel, double mag)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -840,7 +840,7 @@ void SetTXAPostGenSweepMag (int channel, double mag)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAPostGenSweepFreq (int channel, double freq1, double freq2)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -850,7 +850,7 @@ void SetTXAPostGenSweepFreq (int channel, double freq1, double freq2)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAPostGenSweepRate (int channel, double rate)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -859,7 +859,7 @@ void SetTXAPostGenSweepRate (int channel, double rate)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAPostGenPulseMag(int channel, double mag)
 {
 	EnterCriticalSection(&ch[channel].csDSP);
@@ -867,7 +867,7 @@ void SetTXAPostGenPulseMag(int channel, double mag)
 	LeaveCriticalSection(&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAPostGenPulseFreq(int channel, double freq)
 {
 	EnterCriticalSection(&ch[channel].csDSP);
@@ -876,7 +876,7 @@ void SetTXAPostGenPulseFreq(int channel, double freq)
 	LeaveCriticalSection(&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAPostGenPulseDutyCycle(int channel, double dc)
 {
 	EnterCriticalSection(&ch[channel].csDSP);
@@ -885,7 +885,7 @@ void SetTXAPostGenPulseDutyCycle(int channel, double dc)
 	LeaveCriticalSection(&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAPostGenPulseToneFreq(int channel, double freq)
 {
 	EnterCriticalSection(&ch[channel].csDSP);
@@ -894,7 +894,7 @@ void SetTXAPostGenPulseToneFreq(int channel, double freq)
 	LeaveCriticalSection(&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAPostGenPulseTransition(int channel, double transtime)
 {
 	EnterCriticalSection(&ch[channel].csDSP);
@@ -903,7 +903,7 @@ void SetTXAPostGenPulseTransition(int channel, double transtime)
 	LeaveCriticalSection(&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAPostGenPulseIQout(int channel, int IQout)
 {
 	EnterCriticalSection(&ch[channel].csDSP);
@@ -911,7 +911,7 @@ void SetTXAPostGenPulseIQout(int channel, int IQout)
 	LeaveCriticalSection(&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAPostGenTTPulseMag(int channel, double mag1, double mag2)
 {
 	// defaults are 0.5/0.5
@@ -922,7 +922,7 @@ void SetTXAPostGenTTPulseMag(int channel, double mag1, double mag2)
 	LeaveCriticalSection(&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAPostGenTTPulseFreq(int channel, double freq)
 {
 	EnterCriticalSection(&ch[channel].csDSP);
@@ -931,7 +931,7 @@ void SetTXAPostGenTTPulseFreq(int channel, double freq)
 	LeaveCriticalSection(&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAPostGenTTPulseDutyCycle(int channel, double dc)
 {
 	EnterCriticalSection(&ch[channel].csDSP);
@@ -940,7 +940,7 @@ void SetTXAPostGenTTPulseDutyCycle(int channel, double dc)
 	LeaveCriticalSection(&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAPostGenTTPulseToneFreq(int channel, double freq1, double freq2)
 {
 	GEN a = txa[channel].gen1.p;
@@ -951,7 +951,7 @@ void SetTXAPostGenTTPulseToneFreq(int channel, double freq1, double freq2)
 	LeaveCriticalSection(&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAPostGenTTPulseTransition(int channel, double transtime)
 {
 	EnterCriticalSection(&ch[channel].csDSP);
@@ -960,7 +960,7 @@ void SetTXAPostGenTTPulseTransition(int channel, double transtime)
 	LeaveCriticalSection(&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAPostGenTTPulseIQout(int channel, int IQout)
 {
 	EnterCriticalSection(&ch[channel].csDSP);

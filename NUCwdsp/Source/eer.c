@@ -26,7 +26,7 @@ warren@wpratt.com
 
 #include "comm.h"
 
-PORT
+
 EER create_eer (int run, int size, double* in, double* out, double* outM, int rate, double mgain, double pgain, int rundelays, double mdelay, double pdelay, int amiq)
 {
 	EER a = (EER) malloc0 (sizeof (eer));
@@ -66,7 +66,7 @@ EER create_eer (int run, int size, double* in, double* out, double* outM, int ra
 	return a;
 }
 
-PORT
+
 void destroy_eer (EER a)
 {
 	DeleteCriticalSection (&a->cs_update);
@@ -75,14 +75,14 @@ void destroy_eer (EER a)
 	_aligned_free (a);
 }
 
-PORT
+
 void flush_eer (EER a)
 {
 	flush_delay (a->mdel);
 	flush_delay (a->pdel);
 }
 
-PORT
+
 void xeer (EER a)
 {
 	EnterCriticalSection (&a->cs_update);
@@ -128,28 +128,28 @@ void xeer (EER a)
 ********************************************************************************************************/
 
 #define MAX_EXT_EERS	(2)							// maximum number of EERs called from outside wdsp
-__declspec (align (16)) EER peer[MAX_EXT_EERS];		// array of pointers for EERs used EXTERNAL to wdsp
+EER peer[MAX_EXT_EERS];		// array of pointers for EERs used EXTERNAL to wdsp
 
 
-PORT
+
 void create_eerEXT (int id, int run, int size, int rate, double mgain, double pgain, int rundelays, double mdelay, double pdelay, int amiq)
 {
 	peer[id] = create_eer (run, size, 0, 0, 0, rate, mgain, pgain, rundelays, mdelay, pdelay, amiq);
 }
 
-PORT
+
 void destroy_eerEXT (int id)
 {
 	destroy_eer (peer[id]);
 }
 
-PORT
+
 void flush_eerEXT (int id)
 {
 	flush_eer (peer[id]);
 }
 
-PORT
+
 void SetEERRun (int id, int run)
 {
 	EER a = peer[id];
@@ -158,7 +158,7 @@ void SetEERRun (int id, int run)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+
 void SetEERAMIQ (int id, int amiq)
 {
 	EER a = peer[id];
@@ -167,7 +167,7 @@ void SetEERAMIQ (int id, int amiq)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+
 void SetEERMgain (int id, double gain)
 {
 	EER a = peer[id];
@@ -176,7 +176,7 @@ void SetEERMgain (int id, double gain)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+
 void SetEERPgain (int id, double gain)
 {
 	EER a = peer[id];
@@ -185,7 +185,7 @@ void SetEERPgain (int id, double gain)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+
 void SetEERRunDelays (int id, int run)
 {
 	EER a = peer[id];
@@ -196,7 +196,7 @@ void SetEERRunDelays (int id, int run)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+
 void SetEERMdelay (int id, double delay)
 {
 	EER a = peer[id];
@@ -206,7 +206,7 @@ void SetEERMdelay (int id, double delay)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+
 void SetEERPdelay (int id, double delay)
 {
 	EER a = peer[id];
@@ -216,7 +216,7 @@ void SetEERPdelay (int id, double delay)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+
 void SetEERSize (int id, int size)
 {
 	EER a = peer[id];
@@ -227,7 +227,7 @@ void SetEERSize (int id, int size)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+
 void SetEERSamplerate (int id, int rate)
 {
 	EER a = peer[id];
@@ -260,7 +260,7 @@ void SetEERSamplerate (int id, int rate)
 *																										*
 ********************************************************************************************************/
 
-PORT
+
 void pSetEERRun (EER a, int run)
 {
 	EnterCriticalSection (&a->cs_update);
@@ -268,7 +268,7 @@ void pSetEERRun (EER a, int run)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+
 void pSetEERAMIQ (EER a, int amiq)
 {
 	EnterCriticalSection (&a->cs_update);
@@ -276,7 +276,7 @@ void pSetEERAMIQ (EER a, int amiq)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+
 void pSetEERMgain (EER a, double gain)
 {
 	EnterCriticalSection (&a->cs_update);
@@ -284,7 +284,7 @@ void pSetEERMgain (EER a, double gain)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+
 void pSetEERPgain (EER a, double gain)
 {
 	EnterCriticalSection (&a->cs_update);
@@ -292,7 +292,7 @@ void pSetEERPgain (EER a, double gain)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+
 void pSetEERRunDelays (EER a, int run)
 {
 	EnterCriticalSection (&a->cs_update);
@@ -302,7 +302,7 @@ void pSetEERRunDelays (EER a, int run)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+
 void pSetEERMdelay (EER a, double delay)
 {
 	EnterCriticalSection (&a->cs_update);
@@ -311,7 +311,7 @@ void pSetEERMdelay (EER a, double delay)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+
 void pSetEERPdelay (EER a, double delay)
 {
 	EnterCriticalSection (&a->cs_update);
@@ -320,7 +320,7 @@ void pSetEERPdelay (EER a, double delay)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+
 void pSetEERSize (EER a, int size)
 {
 	EnterCriticalSection (&a->cs_update);
@@ -330,7 +330,7 @@ void pSetEERSize (EER a, int size)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+
 void pSetEERSamplerate (EER a, int rate)
 {
 	EnterCriticalSection (&a->cs_update);
@@ -363,7 +363,7 @@ void pSetEERSamplerate (EER a, int rate)
 *																										*
 ********************************************************************************************************/
 
-PORT
+
 void xeerEXTF (int id, float* inI, float* inQ, float* outI, float* outQ, float* outMI, float* outMQ, int mox, int size)
 {
 	EER a = peer[id];

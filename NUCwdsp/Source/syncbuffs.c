@@ -28,7 +28,7 @@ warren@pratt.one
 
 void start_syncbthread (SYNCB a)
 {
-	HANDLE handle = (HANDLE) _beginthread(syncb_main, 0, (void *)a);
+	void *handle = (void *)_beginthread(syncb_main, 0, (void *)a);
 	SetThreadPriority (handle, THREAD_PRIORITY_HIGHEST);
 }
 

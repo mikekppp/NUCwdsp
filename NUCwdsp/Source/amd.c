@@ -261,8 +261,7 @@ void setSize_amd (AMD a, int size)
 *																										*
 ********************************************************************************************************/
 
-PORT void
-SetRXAAMDRun(int channel, int run)
+void SetRXAAMDRun(int channel, int run)
 {
 	AMD a = rxa[channel].amd.p;
 	if (a->run != run)
@@ -276,16 +275,14 @@ SetRXAAMDRun(int channel, int run)
 	}
 }
 
-PORT void
-SetRXAAMDSBMode(int channel, int sbmode)
+void SetRXAAMDSBMode(int channel, int sbmode)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
 	rxa[channel].amd.p->sbmode = sbmode;
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT void
-SetRXAAMDFadeLevel(int channel, int levelfade)
+void SetRXAAMDFadeLevel(int channel, int levelfade)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
 	rxa[channel].amd.p->levelfade = levelfade;

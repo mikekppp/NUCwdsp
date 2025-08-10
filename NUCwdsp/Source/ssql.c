@@ -327,7 +327,7 @@ void setSize_ssql (SSQL a, int size)
 *																										*
 ********************************************************************************************************/
 
-PORT
+ 
 void SetRXASSQLRun (int channel, int run)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -335,7 +335,7 @@ void SetRXASSQLRun (int channel, int run)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetRXASSQLThreshold (int channel, double threshold)
 {
 	// 'threshold' should be between 0.0 and 1.0
@@ -345,7 +345,7 @@ void SetRXASSQLThreshold (int channel, double threshold)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetRXASSQLTauMute (int channel, double tau_mute)
 {
 	// reasonable (wide) range is 0.1 to 2.0
@@ -357,7 +357,7 @@ void SetRXASSQLTauMute (int channel, double tau_mute)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetRXASSQLTauUnMute (int channel, double tau_unmute)
 {
 	// reasonable (wide) range is 0.1 to 1.0

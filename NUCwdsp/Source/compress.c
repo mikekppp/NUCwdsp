@@ -96,8 +96,7 @@ void setSize_compressor (COMPRESSOR a, int size)
 *																										*
 ********************************************************************************************************/
 
-PORT void
-SetTXACompressorRun (int channel, int run)
+void SetTXACompressorRun (int channel, int run)
 {
 	if (txa[channel].compressor.p->run != run)
 	{
@@ -108,8 +107,7 @@ SetTXACompressorRun (int channel, int run)
 	}
 }
 
-PORT void
-SetTXACompressorGain (int channel, double gain)
+void SetTXACompressorGain (int channel, double gain)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
 	txa[channel].compressor.p->gain = pow (10.0, gain / 20.0);

@@ -60,7 +60,7 @@ void init_nob (NOB a)
     flush_nob (a);
 }
 
-PORT
+ 
 NOB create_nob (
 	int run,
 	int buffsize,
@@ -123,7 +123,7 @@ NOB create_nob (
 	return a;
 }
 
-PORT
+ 
 void destroy_nob (NOB a)
 {
 	_aligned_free (a->legacy);																					   ///////////////  remove
@@ -137,7 +137,7 @@ void destroy_nob (NOB a)
 	_aligned_free (a);
 }
 
-PORT
+ 
 void flush_nob (NOB a)
 {
 	a->out_idx = 0;
@@ -154,7 +154,7 @@ void flush_nob (NOB a)
 	memset (a->ffbuff, 0, a->filterlen * sizeof (complex));
 }
 
-PORT
+ 
 void xnob (NOB a)
 {
 	double scale;
@@ -517,7 +517,7 @@ void setSize_nob (NOB a, int size)
 *																										*
 ********************************************************************************************************/
 
-PORT
+ 
 void pSetRCVRNOBRun (NOB a, int run)
 {
 	EnterCriticalSection (&a->cs_update);
@@ -525,7 +525,7 @@ void pSetRCVRNOBRun (NOB a, int run)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+ 
 void pSetRCVRNOBMode (NOB a, int mode)
 {
 	EnterCriticalSection (&a->cs_update);
@@ -533,7 +533,7 @@ void pSetRCVRNOBMode (NOB a, int mode)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+ 
 void pSetRCVRNOBBuffsize (NOB a, int size)
 {
 	EnterCriticalSection (&a->cs_update);
@@ -541,7 +541,7 @@ void pSetRCVRNOBBuffsize (NOB a, int size)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+ 
 void pSetRCVRNOBSamplerate (NOB a, int rate)
 {
 	EnterCriticalSection (&a->cs_update);
@@ -550,7 +550,7 @@ void pSetRCVRNOBSamplerate (NOB a, int rate)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+ 
 void pSetRCVRNOBTau (NOB a, double tau)
 {
 	EnterCriticalSection (&a->cs_update);
@@ -560,7 +560,7 @@ void pSetRCVRNOBTau (NOB a, double tau)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+ 
 void pSetRCVRNOBHangtime (NOB a, double time)
 {
 	EnterCriticalSection (&a->cs_update);
@@ -569,7 +569,7 @@ void pSetRCVRNOBHangtime (NOB a, double time)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+ 
 void pSetRCVRNOBAdvtime (NOB a, double time)
 {
 	EnterCriticalSection (&a->cs_update);
@@ -578,7 +578,7 @@ void pSetRCVRNOBAdvtime (NOB a, double time)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+ 
 void pSetRCVRNOBBacktau (NOB a, double tau)
 {
 	EnterCriticalSection (&a->cs_update);
@@ -587,7 +587,7 @@ void pSetRCVRNOBBacktau (NOB a, double tau)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+ 
 void pSetRCVRNOBThreshold (NOB a, double thresh)
 {
 	EnterCriticalSection (&a->cs_update);
@@ -602,9 +602,9 @@ void pSetRCVRNOBThreshold (NOB a, double thresh)
 ********************************************************************************************************/
 
 #define MAX_EXT_NOBS	(32)						// maximum number of NOBs called from outside wdsp
-__declspec (align (16)) NOB pnob[MAX_EXT_NOBS];		// array of pointers for NOBs used EXTERNAL to wdsp
+NOB pnob[MAX_EXT_NOBS];		// array of pointers for NOBs used EXTERNAL to wdsp
 
-PORT
+ 
 void create_nobEXT	(
 	int id,
 	int run,
@@ -624,19 +624,19 @@ void create_nobEXT	(
 	pnob[id] = create_nob (run, buffsize, 0, 0, samplerate, mode, advslewtime, advtime, hangslewtime, hangtime, max_imp_seq_time, backtau, threshold);
 }
 
-PORT
+ 
 void destroy_nobEXT (int id)
 {
 	destroy_nob (pnob[id]);
 }
 
-PORT
+ 
 void flush_nobEXT (int id)
 {
 	flush_nob (pnob[id]);
 }
 
-PORT
+ 
 void xnobEXT (int id, double* in, double* out)
 {
 	NOB a = pnob[id];
@@ -645,7 +645,7 @@ void xnobEXT (int id, double* in, double* out)
 	xnob (a);
 }
 
-PORT
+ 
 void SetEXTNOBRun (int id, int run)
 {
 	NOB a = pnob[id];
@@ -654,7 +654,7 @@ void SetEXTNOBRun (int id, int run)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+ 
 void SetEXTNOBMode (int id, int mode)
 {
 	NOB a = pnob[id];
@@ -663,7 +663,7 @@ void SetEXTNOBMode (int id, int mode)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+ 
 void SetEXTNOBBuffsize (int id, int size)
 {
 	NOB a = pnob[id];
@@ -672,7 +672,7 @@ void SetEXTNOBBuffsize (int id, int size)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+ 
 void SetEXTNOBSamplerate (int id, int rate)
 {
 	NOB a = pnob[id];
@@ -682,7 +682,7 @@ void SetEXTNOBSamplerate (int id, int rate)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+ 
 void SetEXTNOBTau (int id, double tau)
 {
 	NOB a = pnob[id];
@@ -693,7 +693,7 @@ void SetEXTNOBTau (int id, double tau)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+ 
 void SetEXTNOBHangtime (int id, double time)
 {
 	NOB a = pnob[id];
@@ -703,7 +703,7 @@ void SetEXTNOBHangtime (int id, double time)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+ 
 void SetEXTNOBAdvtime (int id, double time)
 {
 	NOB a = pnob[id];
@@ -713,7 +713,7 @@ void SetEXTNOBAdvtime (int id, double time)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+ 
 void SetEXTNOBBacktau (int id, double tau)
 {
 	NOB a = pnob[id];
@@ -723,7 +723,7 @@ void SetEXTNOBBacktau (int id, double tau)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+ 
 void SetEXTNOBThreshold (int id, double thresh)
 {
 	NOB a = pnob[id];
@@ -738,7 +738,7 @@ void SetEXTNOBThreshold (int id, double thresh)
 *																										*
 ********************************************************************************************************/
 
-PORT
+ 
 void xnobEXTF (int id, float *I, float *Q)
 {
 	int i;

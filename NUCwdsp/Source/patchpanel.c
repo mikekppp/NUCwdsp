@@ -122,7 +122,7 @@ void setSize_panel (PANEL a, int size)
 *																										*
 ********************************************************************************************************/
 
-PORT
+ 
 void SetRXAPanelRun (int channel, int run)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -130,7 +130,7 @@ void SetRXAPanelRun (int channel, int run)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetRXAPanelSelect (int channel, int select)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -138,7 +138,7 @@ void SetRXAPanelSelect (int channel, int select)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetRXAPanelGain1 (int channel, double gain)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -146,7 +146,7 @@ void SetRXAPanelGain1 (int channel, double gain)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetRXAPanelGain2 (int channel, double gainI, double gainQ)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -155,7 +155,7 @@ void SetRXAPanelGain2 (int channel, double gainI, double gainQ)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetRXAPanelPan (int channel, double pan)
 {
 	double gain1, gain2;
@@ -175,7 +175,7 @@ void SetRXAPanelPan (int channel, double pan)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetRXAPanelCopy (int channel, int copy)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -183,7 +183,7 @@ void SetRXAPanelCopy (int channel, int copy)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetRXAPanelBinaural (int channel, int bin)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -197,7 +197,7 @@ void SetRXAPanelBinaural (int channel, int bin)
 *																										*
 ********************************************************************************************************/
 
-PORT
+ 
 void SetTXAPanelRun (int channel, int run)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -205,7 +205,7 @@ void SetTXAPanelRun (int channel, int run)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAPanelGain1 (int channel, double gain)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -214,7 +214,7 @@ void SetTXAPanelGain1 (int channel, double gain)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAPanelSelect (int channel, int select)
 {
 	EnterCriticalSection (&ch[channel].csDSP);

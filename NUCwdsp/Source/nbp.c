@@ -358,7 +358,7 @@ void UpdateNBPFilters(int channel)
 	}
 }
 
-PORT
+ 
 int RXANBPAddNotch (int channel, int notch, double fcenter, double fwidth, int active)
 {
 	NOTCHDB b;
@@ -389,7 +389,7 @@ int RXANBPAddNotch (int channel, int notch, double fcenter, double fwidth, int a
 	return rval;
 }
 
-PORT
+ 
 int RXANBPGetNotch (int channel, int notch, double* fcenter, double* fwidth, int* active)
 {
 	NOTCHDB a;
@@ -414,7 +414,7 @@ int RXANBPGetNotch (int channel, int notch, double* fcenter, double* fwidth, int
 	return rval;
 }
 
-PORT
+ 
 int RXANBPDeleteNotch (int channel, int notch)
 {
 	int i, j;
@@ -440,7 +440,7 @@ int RXANBPDeleteNotch (int channel, int notch)
 	return rval;
 }
 
-PORT
+ 
 int RXANBPEditNotch (int channel, int notch, double fcenter, double fwidth, int active)
 {
 	NOTCHDB a;
@@ -461,7 +461,7 @@ int RXANBPEditNotch (int channel, int notch, double fcenter, double fwidth, int 
 	return rval;
 }
 
-PORT
+ 
 void RXANBPGetNumNotches (int channel, int* nnotches)
 {
 	NOTCHDB a;
@@ -471,7 +471,7 @@ void RXANBPGetNumNotches (int channel, int* nnotches)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void RXANBPSetTuneFrequency (int channel, double tunefreq)
 {
 	NOTCHDB a;
@@ -483,7 +483,7 @@ void RXANBPSetTuneFrequency (int channel, double tunefreq)
 	}
 }
 
-PORT
+ 
 void RXANBPSetShiftFrequency (int channel, double shift)
 {
 	NOTCHDB a;
@@ -495,7 +495,7 @@ void RXANBPSetShiftFrequency (int channel, double shift)
 	}
 }
 
-PORT
+ 
 void RXANBPSetNotchesRun (int channel, int run)
 {
 	NOTCHDB a = rxa[channel].ndb.p; 
@@ -517,7 +517,7 @@ void RXANBPSetNotchesRun (int channel, int run)
 
 // FILTER PROPERTIES
 
-PORT
+ 
 void RXANBPSetRun (int channel, int run)
 {
 	NBP a;
@@ -527,7 +527,7 @@ void RXANBPSetRun (int channel, int run)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void RXANBPSetFreqs (int channel, double flow, double fhigh)
 {
 	NBP a;
@@ -542,7 +542,7 @@ void RXANBPSetFreqs (int channel, double flow, double fhigh)
 	}
 }
 
-PORT
+ 
 void RXANBPSetWindow (int channel, int wintype)
 {
 	NBP a;
@@ -563,7 +563,7 @@ void RXANBPSetWindow (int channel, int wintype)
 	}
 }
 
-PORT
+ 
 void RXANBPSetNC (int channel, int nc)
 {
 	// NOTE:  'nc' must be >= 'size'
@@ -578,7 +578,7 @@ void RXANBPSetNC (int channel, int nc)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void RXANBPSetMP (int channel, int mp)
 {
 	NBP a;
@@ -590,7 +590,7 @@ void RXANBPSetMP (int channel, int mp)
 	}
 }
 
-PORT
+ 
 void RXANBPGetMinNotchWidth (int channel, double* minwidth)
 {
 	NBP a;
@@ -600,7 +600,7 @@ void RXANBPGetMinNotchWidth (int channel, double* minwidth)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void RXANBPSetAutoIncrease (int channel, int autoincr)
 {
 	NBP a;

@@ -410,7 +410,7 @@ void setSize_cfcomp (CFCOMP a, int size)
 *																										*
 ********************************************************************************************************/
 
-PORT
+
 void SetTXACFCOMPRun (int channel, int run)
 {
 	CFCOMP a = txa[channel].cfcomp.p;
@@ -422,7 +422,6 @@ void SetTXACFCOMPRun (int channel, int run)
 	}
 }
 
-PORT 
 void SetTXACFCOMPPosition (int channel, int pos)
 {
 	CFCOMP a = txa[channel].cfcomp.p;
@@ -434,7 +433,7 @@ void SetTXACFCOMPPosition (int channel, int pos)
 	}
 }
 
-PORT
+
 void SetTXACFCOMPprofile (int channel, int nfreqs, double* F, double* G, double *E)
 {
 	CFCOMP a = txa[channel].cfcomp.p;
@@ -459,7 +458,7 @@ void SetTXACFCOMPprofile (int channel, int nfreqs, double* F, double* G, double 
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+
 void SetTXACFCOMPPrecomp (int channel, double precomp)
 {
 	CFCOMP a = txa[channel].cfcomp.p;
@@ -476,7 +475,7 @@ void SetTXACFCOMPPrecomp (int channel, double precomp)
 	}
 }
 
-PORT
+
 void SetTXACFCOMPPeqRun (int channel, int run)
 {
 	CFCOMP a = txa[channel].cfcomp.p;
@@ -488,7 +487,7 @@ void SetTXACFCOMPPeqRun (int channel, int run)
 	}
 }
 
-PORT
+
 void SetTXACFCOMPPrePeq (int channel, double prepeq)
 {
 	CFCOMP a = txa[channel].cfcomp.p;
@@ -498,7 +497,7 @@ void SetTXACFCOMPPrePeq (int channel, double prepeq)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+
 void GetTXACFCOMPDisplayCompression (int channel, double* comp_values, int* ready)
 {
 	int i;

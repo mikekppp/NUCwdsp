@@ -318,7 +318,7 @@ void setSize_speak (SPEAK a, int size)
 *																										*
 ********************************************************************************************************/
 
-PORT
+ 
 void SetRXASPCWRun (int channel, int run)
 {
 	SPEAK a = rxa[channel].speak.p;
@@ -327,7 +327,7 @@ void SetRXASPCWRun (int channel, int run)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+ 
 void SetRXASPCWFreq (int channel, double freq)
 {
 	SPEAK a = rxa[channel].speak.p;
@@ -337,7 +337,7 @@ void SetRXASPCWFreq (int channel, double freq)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+ 
 void SetRXASPCWBandwidth (int channel, double bw)
 {
 	SPEAK a = rxa[channel].speak.p;
@@ -347,7 +347,7 @@ void SetRXASPCWBandwidth (int channel, double bw)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+ 
 void SetRXASPCWGain (int channel, double gain)
 {
 	SPEAK a = rxa[channel].speak.p;
@@ -486,7 +486,7 @@ void setSize_mpeak (MPEAK a, int size)
 *																										*
 ********************************************************************************************************/
 
-PORT
+ 
 void SetRXAmpeakRun (int channel, int run)
 {
 	MPEAK a = rxa[channel].mpeak.p;
@@ -495,7 +495,7 @@ void SetRXAmpeakRun (int channel, int run)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+ 
 void SetRXAmpeakNpeaks (int channel, int npeaks)
 {
 	MPEAK a = rxa[channel].mpeak.p;
@@ -504,7 +504,7 @@ void SetRXAmpeakNpeaks (int channel, int npeaks)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+ 
 void SetRXAmpeakFilEnable (int channel, int fil, int enable)
 {
 	MPEAK a = rxa[channel].mpeak.p;
@@ -513,7 +513,7 @@ void SetRXAmpeakFilEnable (int channel, int fil, int enable)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+ 
 void SetRXAmpeakFilFreq (int channel, int fil, double freq)
 {
 	MPEAK a = rxa[channel].mpeak.p;
@@ -524,7 +524,7 @@ void SetRXAmpeakFilFreq (int channel, int fil, double freq)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+ 
 void SetRXAmpeakFilBw (int channel, int fil, double bw)
 {
 	MPEAK a = rxa[channel].mpeak.p;
@@ -535,7 +535,7 @@ void SetRXAmpeakFilBw (int channel, int fil, double bw)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+ 
 void SetRXAmpeakFilGain (int channel, int fil, double gain)
 {
 	MPEAK a = rxa[channel].mpeak.p;
@@ -661,7 +661,7 @@ void setSize_phrot (PHROT a, int size)
 *																										*
 ********************************************************************************************************/
 
-PORT
+ 
 void SetTXAPHROTRun (int channel, int run)
 {
 	PHROT a = txa[channel].phrot.p;
@@ -671,7 +671,7 @@ void SetTXAPHROTRun (int channel, int run)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+ 
 void SetTXAPHROTCorner (int channel, double corner)
 {
 	PHROT a = txa[channel].phrot.p;
@@ -682,7 +682,7 @@ void SetTXAPHROTCorner (int channel, double corner)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+ 
 void SetTXAPHROTNstages (int channel, int nstages)
 {
 	PHROT a = txa[channel].phrot.p;
@@ -693,7 +693,7 @@ void SetTXAPHROTNstages (int channel, int nstages)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+ 
 void SetTXAPHROTReverse (int channel, int reverse)
 {
 	PHROT a = txa[channel].phrot.p;

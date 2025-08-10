@@ -183,7 +183,7 @@ void decalc_antivox(DEXP a)
 	_aligned_free (a->antivox_data);
 }
 
-PORT
+
 void create_dexp (int id, int run_dexp, int size, double* in, double* out, int rate, double dettau, double tattack, double tdecay, 
 	double thold, double exp_ratio, double hyst_ratio, double attack_thresh, int nc, int wtype, double lowcut, double highcut, 
 	int run_filt, int run_vox, int run_audelay, double audelay, void (__stdcall *pushvox)(int id, int active),
@@ -226,7 +226,7 @@ void create_dexp (int id, int run_dexp, int size, double* in, double* out, int r
 	return;
 }
 
-PORT
+
 void destroy_dexp (int id)
 {
 	DEXP a = pdexp[id];
@@ -238,7 +238,7 @@ void destroy_dexp (int id)
 	_aligned_free (a);
 }
 
-PORT
+
 void flush_dexp (int id)
 {
 	DEXP a = pdexp[id];
@@ -262,7 +262,7 @@ enum _dexpstate
 	DEXP_DECAY
 };
 
-PORT
+
 void xdexp (int id)
 {
 	DEXP a = pdexp[id];
@@ -395,7 +395,7 @@ void xdexp (int id)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+
 void SendCBPushDexpVox (int id, void (__stdcall *pushvox)(int id, int active))
 {
 	// Call to set the address of the callback to operate VOX.
@@ -403,7 +403,7 @@ void SendCBPushDexpVox (int id, void (__stdcall *pushvox)(int id, int active))
 	a->pushvox = pushvox;
 }
 
-PORT
+
 void SetDEXPRun (int id, int run)
 {
 	// run != 0, puts dexp in the audio processing path; otherwise, it's only used to trigger VOX
@@ -413,7 +413,7 @@ void SetDEXPRun (int id, int run)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+
 void SetDEXPSize (int id, int size)
 {
 	// There are some constraints on the input/output buffer sizes.
@@ -432,7 +432,7 @@ void SetDEXPSize (int id, int size)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+
 void SetDEXPIOBuffers (int id, double* in, double* out)
 {
 	// Sets the input/output buffers.  They can be the same.
@@ -447,7 +447,7 @@ void SetDEXPIOBuffers (int id, double* in, double* out)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+
 void SetDEXPRate (int id, double rate)
 {
 	// Sets the sample rate.
@@ -462,7 +462,7 @@ void SetDEXPRate (int id, double rate)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+
 void SetDEXPDetectorTau (int id, double tau)
 {
 	// Time-constant for smoothing the signal for detection (seconds).
@@ -475,7 +475,7 @@ void SetDEXPDetectorTau (int id, double tau)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+
 void SetDEXPAttackTime (int id, double time)
 {
 	// Set attack time, seconds.
@@ -488,7 +488,7 @@ void SetDEXPAttackTime (int id, double time)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+
 void SetDEXPReleaseTime (int id, double time)
 {
 	// Set release time, seconds.
@@ -501,7 +501,7 @@ void SetDEXPReleaseTime (int id, double time)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+
 void SetDEXPHoldTime (int id, double time)
 {
 	// Set hold time, seconds.
@@ -514,7 +514,7 @@ void SetDEXPHoldTime (int id, double time)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+
 void SetDEXPExpansionRatio (int id, double ratio)
 {
 	// Set expansion ratio.  High_gain = 1.0; Low_gain = 1.0/exp_ratio.
@@ -527,7 +527,7 @@ void SetDEXPExpansionRatio (int id, double ratio)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+
 void SetDEXPHysteresisRatio (int id, double ratio)
 {
 	// Set Hysteresis Ratio.  Hold_thresh = hysteresis_ratio * Attack_thresh.
@@ -540,7 +540,7 @@ void SetDEXPHysteresisRatio (int id, double ratio)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+
 void SetDEXPAttackThreshold (int id, double thresh)
 {
 	// Set attack threshold.
@@ -552,7 +552,7 @@ void SetDEXPAttackThreshold (int id, double thresh)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+
 void SetDEXPFilterTaps (int id, int taps)
 {
 	// Set number of taps.  Must be a power of two and an even multiple of 'size'.
@@ -564,7 +564,7 @@ void SetDEXPFilterTaps (int id, int taps)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+
 void SetDEXPWindowType (int id, int type)
 {
 	// Set filter window type.
@@ -578,7 +578,7 @@ void SetDEXPWindowType (int id, int type)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+
 void SetDEXPLowCut (int id, double lowcut)
 {
 	// Set side-channel filter low_cut (Hertz).
@@ -590,7 +590,7 @@ void SetDEXPLowCut (int id, double lowcut)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+
 void SetDEXPHighCut (int id, double highcut)
 {
 	// Set side-channel filter high_cut (Hertz).
@@ -602,7 +602,7 @@ void SetDEXPHighCut (int id, double highcut)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+
 void SetDEXPRunSideChannelFilter (int id, int run)
 {
 	// Turn OFF/ON the side-channel filter and its compensating delay.
@@ -612,7 +612,7 @@ void SetDEXPRunSideChannelFilter (int id, int run)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+
 void SetDEXPRunVox (int id, int run)
 {
 	// Turn OFF/ON calls to 'pushvox(...)'.
@@ -622,7 +622,7 @@ void SetDEXPRunVox (int id, int run)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+
 void SetDEXPRunAudioDelay (int id, int run)
 {
 	// Turn OFF/ON audio delay line.
@@ -632,7 +632,7 @@ void SetDEXPRunAudioDelay (int id, int run)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+
 void SetDEXPAudioDelay (int id, double delay)
 {
 	// Set the audio delay, seconds.
@@ -644,7 +644,7 @@ void SetDEXPAudioDelay (int id, double delay)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+
 void GetDEXPPeakSignal (int id, double* peak)
 {
 	DEXP a = pdexp[id];
@@ -653,7 +653,7 @@ void GetDEXPPeakSignal (int id, double* peak)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+
 void SetAntiVOXRun (int id, int run)
 {
 	DEXP a = pdexp[id];
@@ -662,7 +662,7 @@ void SetAntiVOXRun (int id, int run)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+
 void SetAntiVOXSize (int id, int size)
 {
 	DEXP a = pdexp[id];
@@ -673,7 +673,7 @@ void SetAntiVOXSize (int id, int size)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+
 void SetAntiVOXRate (int id, double rate)
 {
 	DEXP a = pdexp[id];
@@ -684,7 +684,7 @@ void SetAntiVOXRate (int id, double rate)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+
 void SetAntiVOXGain (int id, double gain)
 {
 	DEXP a = pdexp[id];
@@ -693,7 +693,7 @@ void SetAntiVOXGain (int id, double gain)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+
 void SetAntiVOXDetectorTau (int id, double tau)
 {
 	DEXP a = pdexp[id];
@@ -704,7 +704,7 @@ void SetAntiVOXDetectorTau (int id, double tau)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT 
+ 
 void SendAntiVOXData (int id, int nsamples, double* data)
 {
 	// note:  'nsamples' is not used as it has been previously specified

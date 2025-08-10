@@ -47,7 +47,7 @@ typedef struct _syncb
 	int   r1_unqueuedsamps;						// number of input samples not yet queued/released for execution
 	volatile long run;							// when 1, thread loops; when 0, thread terminates
 	volatile long accept;						// flag indicating whether accepting input data
-	HANDLE Sem_BuffReady;						// count = number of output-sized buffers queued for processing
+	void * Sem_BuffReady;						// count = number of output-sized buffers queued for processing
 	CRITICAL_SECTION csOUT;						// used to block output while parameters are updated or buffers flushed
 	CRITICAL_SECTION csIN;						// used to block input while parameters are updated or buffers flushed
 } syncb, *SYNCB;

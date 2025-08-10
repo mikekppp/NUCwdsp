@@ -187,7 +187,7 @@ extern void SnapSpectrumTimeout(   int disp,
                             int ss,
                             int LO,
                             double* snap_buff,
-                            DWORD timeout,
+							unsigned long timeout,
                             int* flag);
 extern void SetCalibration (	int disp,
 						int set_num,

@@ -109,7 +109,7 @@ void setSize_shift (SHIFT a, int size)
 *																										*
 ********************************************************************************************************/
 
-PORT
+ 
 void SetRXAShiftRun (int channel, int run)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -117,7 +117,7 @@ void SetRXAShiftRun (int channel, int run)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetRXAShiftFreq (int channel, double fshift)
 {
 	EnterCriticalSection (&ch[channel].csDSP);

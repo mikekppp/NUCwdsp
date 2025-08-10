@@ -749,7 +749,7 @@ void setDSPBuffsize_txa (int channel)
 *																										*
 ********************************************************************************************************/
 
-PORT
+ 
 void SetTXAMode (int channel, int mode)
 {
 	if (txa[channel].mode != mode)
@@ -788,7 +788,7 @@ void SetTXAMode (int channel, int mode)
 	}
 }
 
-PORT
+ 
 void SetTXABandpassFreqs (int channel, double f_low, double f_high)
 {
 	if ((txa[channel].f_low != f_low) || (txa[channel].f_high != f_high))
@@ -906,7 +906,7 @@ void TXASetupBPFilters (int channel)
 *																										*
 ********************************************************************************************************/
 
-PORT
+ 
 void TXASetNC (int channel, int nc)
 {
 	int oldstate = SetChannelState (channel, 0, 1);
@@ -918,7 +918,7 @@ void TXASetNC (int channel, int nc)
 	SetChannelState (channel, oldstate, 0);
 }
 
-PORT
+ 
 void TXASetMP (int channel, int mp)
 {
 	SetTXABandpassMP			(channel, mp);
@@ -927,7 +927,7 @@ void TXASetMP (int channel, int mp)
 	SetTXAFMMP					(channel, mp);
 }
 
-PORT
+ 
 void SetTXAFMAFFilter (int channel, double low, double high)
 {
 	SetTXAFMPreEmphFreqs (channel, low, high);

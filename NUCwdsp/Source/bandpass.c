@@ -140,7 +140,7 @@ void setFreqs_bps (BPS a, double f_low, double f_high)
 *																										*
 ********************************************************************************************************/
 /*	// UNCOMMENT properties when a pointer is in place in rxa[channel]
-PORT
+
 void SetRXABPSRun (int channel, int run)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -148,7 +148,7 @@ void SetRXABPSRun (int channel, int run)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+
 void SetRXABPSFreqs (int channel, double f_low, double f_high)
 {
 	double* impulse;
@@ -167,7 +167,7 @@ void SetRXABPSFreqs (int channel, double f_low, double f_high)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+
 void SetRXABPSWindow (int channel, int wintype)
 {
 	double* impulse;
@@ -191,7 +191,7 @@ void SetRXABPSWindow (int channel, int wintype)
 *																										*
 ********************************************************************************************************/
 /*	// UNCOMMENT properties when pointers in place in txa[channel]
-PORT
+
 void SetTXABPSRun (int channel, int run)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -199,7 +199,7 @@ void SetTXABPSRun (int channel, int run)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+
 void SetTXABPSFreqs (int channel, double f_low, double f_high)
 {
 	double* impulse;
@@ -238,7 +238,7 @@ void SetTXABPSFreqs (int channel, double f_low, double f_high)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+
 void SetTXABPSWindow (int channel, int wintype)
 {
 	double* impulse;
@@ -381,7 +381,7 @@ void CalcBandpassFilter (BANDPASS a, double f_low, double f_high, double gain)
 *																										*
 ********************************************************************************************************/
 
-PORT
+
 void SetRXABandpassRun (int channel, int run)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -389,7 +389,7 @@ void SetRXABandpassRun (int channel, int run)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+
 void SetRXABandpassFreqs (int channel, double f_low, double f_high)
 {
 	double* impulse;
@@ -408,7 +408,7 @@ void SetRXABandpassFreqs (int channel, double f_low, double f_high)
 	}
 }
 
-PORT
+
 void SetRXABandpassWindow (int channel, int wintype)
 {
 	double* impulse;
@@ -426,7 +426,7 @@ void SetRXABandpassWindow (int channel, int wintype)
 	}
 }
 
-PORT
+
 void SetRXABandpassNC (int channel, int nc)
 {
 	// NOTE:  'nc' must be >= 'size'
@@ -444,7 +444,7 @@ void SetRXABandpassNC (int channel, int nc)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+
 void SetRXABandpassMP (int channel, int mp)
 {
 	BANDPASS a;
@@ -462,7 +462,7 @@ void SetRXABandpassMP (int channel, int mp)
 *																										*
 ********************************************************************************************************/
 
-PORT
+
 void SetTXABandpassRun (int channel, int run)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -470,7 +470,7 @@ void SetTXABandpassRun (int channel, int run)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-//PORT
+//
 //void SetTXABandpassFreqs (int channel, double f_low, double f_high)
 //{
 //	double* impulse;
@@ -504,7 +504,7 @@ void SetTXABandpassRun (int channel, int run)
 //	}
 //}
 
-PORT
+
 void SetTXABandpassWindow (int channel, int wintype)
 {
 	double* impulse;
@@ -535,7 +535,7 @@ void SetTXABandpassWindow (int channel, int wintype)
 	}
 }
 
-PORT
+
 void SetTXABandpassNC (int channel, int nc)
 {
 	// NOTE:  'nc' must be >= 'size'
@@ -569,7 +569,7 @@ void SetTXABandpassNC (int channel, int nc)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+
 void SetTXABandpassMP (int channel, int mp)
 {
 	BANDPASS a;

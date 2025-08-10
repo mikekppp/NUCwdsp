@@ -745,7 +745,7 @@ void setDSPBuffsize_rxa (int channel)
 *																										*
 ********************************************************************************************************/
 
-PORT
+ 
 void SetRXAMode (int channel, int mode)
 {
 	if (rxa[channel].mode != mode)
@@ -923,7 +923,7 @@ void RXAbpsnbaSet (int channel)
 *																										*
 ********************************************************************************************************/
 
-PORT
+ 
 void RXASetPassband (int channel, double f_low, double f_high)
 {
 	SetRXABandpassFreqs			(channel, f_low, f_high);
@@ -931,7 +931,7 @@ void RXASetPassband (int channel, double f_low, double f_high)
 	RXANBPSetFreqs				(channel, f_low, f_high);
 }
 
-PORT
+ 
 void RXASetNC (int channel, int nc)
 {
 	int oldstate = SetChannelState (channel, 0, 1);
@@ -945,7 +945,7 @@ void RXASetNC (int channel, int nc)
 	SetChannelState (channel, oldstate, 0);
 }
 
-PORT
+ 
 void RXASetMP (int channel, int mp)
 {
 	RXANBPSetMP					(channel, mp);

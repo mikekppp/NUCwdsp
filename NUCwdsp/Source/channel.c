@@ -30,8 +30,8 @@ struct _ch ch[MAX_CHANNELS];
 
 void start_thread (int channel)
 {
-	HANDLE handle;
-	handle = (HANDLE)_beginthread(wdspmain, 0, (void *)(uintptr_t)channel);
+	void *handle;
+	handle = (void *)_beginthread(wdspmain, 0, (void *)(uintptr_t)channel);
 	if (handle != NULL)
 	{
 		//SetThreadPriority(handle, THREAD_PRIORITY_HIGHEST);
@@ -76,7 +76,7 @@ void build_channel (int channel)
 	post_main_build (channel);
 }
 
-PORT
+
 void OpenChannel (int channel, int in_size, int dsp_size, int input_samplerate, int dsp_rate, int output_samplerate, 
 	int type, int state, double tdelayup, double tslewup, double tdelaydown, double tslewdown, int bfo)
 {
@@ -123,7 +123,7 @@ void post_main_destroy (int channel)
 	DeleteCriticalSection ( &ch[channel].csDSP );
 }
 
-PORT
+
 void CloseChannel (int channel)
 {
 	pre_main_destroy (channel);
@@ -159,7 +159,7 @@ void flushChannel (void* p)
 *																										*
 ********************************************************************************************************/
 
-PORT
+
 void SetType (int channel, int type)
 {	// no need to rebuild buffers; but we did anyway
 	if (type != ch[channel].type)
@@ -170,7 +170,7 @@ void SetType (int channel, int type)
 	}
 }
 
-PORT
+
 void SetInputBuffsize (int channel, int in_size)
 {	// we do not rebuild main here since it didn't change
 	if (in_size != ch[channel].in_size)
@@ -183,7 +183,7 @@ void SetInputBuffsize (int channel, int in_size)
 	}
 }
 
-PORT
+
 void SetDSPBuffsize (int channel, int dsp_size)
 {
 	if (dsp_size != ch[channel].dsp_size)
@@ -199,7 +199,7 @@ void SetDSPBuffsize (int channel, int dsp_size)
 	}
 }
 
-PORT
+
 void SetInputSamplerate (int channel, int in_rate)
 {	// no re-build of main required
 	if (in_rate != ch[channel].in_rate)
@@ -213,7 +213,7 @@ void SetInputSamplerate (int channel, int in_rate)
 	}
 }
 
-PORT
+
 void SetDSPSamplerate (int channel, int dsp_rate)
 {
 	if (dsp_rate != ch[channel].dsp_rate)
@@ -229,7 +229,7 @@ void SetDSPSamplerate (int channel, int dsp_rate)
 	}
 }
 
-PORT
+
 void SetOutputSamplerate (int channel, int out_rate)
 {	// no re-build of main required
 	if (out_rate != ch[channel].out_rate)
@@ -243,7 +243,7 @@ void SetOutputSamplerate (int channel, int out_rate)
 	}
 }
 
-PORT
+
 void SetAllRates (int channel, int in_rate, int dsp_rate, int out_rate)
 {
 	if ((in_rate != ch[channel].in_rate) || (dsp_rate != ch[channel].dsp_rate) || (out_rate != ch[channel].out_rate))
@@ -261,7 +261,7 @@ void SetAllRates (int channel, int in_rate, int dsp_rate, int out_rate)
 	}
 }
 
-PORT
+
 int SetChannelState (int channel, int state, int dmode)
 {
 	IOB a = ch[channel].iob.pc;
@@ -302,7 +302,7 @@ int SetChannelState (int channel, int state, int dmode)
 	return prior_state;
 }
 
-PORT
+
 void SetChannelTDelayUp (int channel, double time)
 {
 	IOB a;
@@ -314,7 +314,7 @@ void SetChannelTDelayUp (int channel, double time)
 	LeaveCriticalSection (&ch[channel].csEXCH);
 }
 
-PORT
+
 void SetChannelTSlewUp (int channel, double time)
 {
 	IOB a;
@@ -326,7 +326,7 @@ void SetChannelTSlewUp (int channel, double time)
 	LeaveCriticalSection (&ch[channel].csEXCH);
 }
 
-PORT
+
 void SetChannelTDelayDown (int channel, double time)
 {
 	IOB a;
@@ -338,7 +338,7 @@ void SetChannelTDelayDown (int channel, double time)
 	LeaveCriticalSection (&ch[channel].csEXCH);
 }
 
-PORT
+
 void SetChannelTSlewDown (int channel, double time)
 {
 	IOB a;

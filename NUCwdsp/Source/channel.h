@@ -59,26 +59,26 @@ struct _ch
 
 extern struct _ch ch[];
 
-PORT void OpenChannel (int channel, int in_size, int dsp_size, int input_samplerate, int dsp_rate, int output_samplerate, int type, int state, double tdelayup, double tslewup, double tdelaydown, double tslewdown, int bfo);
+void OpenChannel (int channel, int in_size, int dsp_size, int input_samplerate, int dsp_rate, int output_samplerate, int type, int state, double tdelayup, double tslewup, double tdelaydown, double tslewdown, int bfo);
 
-PORT void CloseChannel (int channel);
+void CloseChannel (int channel);
 
 extern void flushChannel (void* p);
 
-PORT void SetType (int channel, int type);
+void SetType (int channel, int type);
 
-PORT void SetInputBuffsize (int channel, int in_size);
+void SetInputBuffsize (int channel, int in_size);
 
-PORT void SetDSPBuffsize (int channel, int dsp_size);
+void SetDSPBuffsize (int channel, int dsp_size);
 
-PORT void SetInputSamplerate  (int channel, int samplerate);
+void SetInputSamplerate  (int channel, int samplerate);
 
-PORT void SetDSPSamplerate (int channel, int samplerate);
+void SetDSPSamplerate (int channel, int samplerate);
 
-PORT void SetOutputSamplerate (int channel, int samplerate);
+void SetOutputSamplerate (int channel, int samplerate);
 
-PORT void SetAllRates (int channel, int in_rate, int dsp_rate, int out_rate);
+void SetAllRates (int channel, int in_rate, int dsp_rate, int out_rate);
 
-PORT int SetChannelState (int channel, int state, int dmode);
+int SetChannelState (int channel, int state, int dmode);
 
 #endif

@@ -1,6 +1,6 @@
 #include "comm.h"
 
-PORT
+ 
 int GetWDSPVersion(void)
 {
 	// WDSP Version numbers always contain exactly two digits to the right of the decimal point.

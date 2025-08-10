@@ -229,13 +229,13 @@ void setBandwidth_varsamp (VARSAMP a, double fc_low, double fc_high)
 
 // exported calls
 
-PORT
+ 
 void* create_varsampV (int in_rate, int out_rate, int R)
 {
 	return (void *)create_varsamp (1, 0, 0, 0, in_rate, out_rate, 0.0, -1.0, R, 1.0, 1.0, 1);
 }
 
-PORT
+ 
 void xvarsampV (double* input, double* output, int numsamps, double var, int* outsamps, void* ptr)
 {
 	VARSAMP a = (VARSAMP)ptr;
@@ -245,7 +245,7 @@ void xvarsampV (double* input, double* output, int numsamps, double var, int* ou
 	*outsamps = xvarsamp(a, var);
 }
 
-PORT
+ 
 void destroy_varsampV (void* ptr)
 {
 	destroy_varsamp ( (VARSAMP)ptr );

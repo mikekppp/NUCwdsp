@@ -164,37 +164,31 @@ void LinuxResetEvent(sem_t* sem) {
     while (sem_trywait(sem) == 0) ;
 }
 
-HANDLE _beginthread( void( __cdecl *start_address )( void * ), unsigned stack_size, void *arglist) {
+void * _beginthread( void(*start_address )( void * ), unsigned stack_size, void *arglist) {
 	pthread_t threadid;
 	pthread_attr_t  attr;
 
 	if (pthread_attr_init(&attr)) {
- 	    return (HANDLE)-1;
+ 	    return (void *)-1;
 	}
       
 	if(stack_size!=0) {
 	    if (pthread_attr_setstacksize(&attr, stack_size)) {
-	        return (HANDLE)-1;
+	        return (void *)-1;
 	    }
 	}
 
         if(pthread_attr_setdetachstate(&attr,PTHREAD_CREATE_DETACHED)) {
-            return (HANDLE)-1;
+            return (void *)-1;
         }
      
 	if (pthread_create(&threadid, &attr, (void*(*)(void*))start_address, arglist)) {
-	     return (HANDLE)-1;
+	     return (void *)-1;
 	}
 
         //pthread_attr_destroy(&attr);
-#ifndef __APPLE__
-	// DL1YCF: this function does not exist on MacOS. You can only name the
-        //         current thread.
-       //          If this call should fail, continue anyway.
-        (void) pthread_setname_np(threadid, "WDSP");
-#endif
 
-	return (HANDLE)threadid;
+	return (void *)threadid;
 
 }
 
@@ -203,7 +197,7 @@ void _endthread(void)
 	pthread_exit(NULL);
 }
 
-void SetThreadPriority(HANDLE thread, int priority)  {
+void SetThreadPriority(void *thread, int priority)  {
 //
 // In Linux, the scheduling priority only affects
 // real-time threads (SCHED_FIFO, SCHED_RR), so this
@@ -219,7 +213,7 @@ void SetThreadPriority(HANDLE thread, int priority)  {
 */
 }
 
-void CloseHandle(HANDLE hObject) {
+void CloseHandle(void *hObject) {
 //
 // This routine is *ONLY* called to release semaphores
 // The WDSP transmitter thread terminates upon each TX/RX
@@ -230,19 +224,20 @@ void CloseHandle(HANDLE hObject) {
 // (MacOS).
 //
 #ifdef __APPLE__
-if (sem_close((sem_t *)hObject) < 0) {
-  perror("WDSP:CloseHandle:SemCLose");
-}
+	if (sem_close((sem_t *)hObject) < 0)
+	{
+			perror("WDSP:CloseHandle:SemCLose");
+	}
 #else
-if (sem_destroy((sem_t *)hObject) < 0) {
-  perror("WDSP:CloseHandle:SemDestroy");
-} else {
-  // if sem_destroy failed, do not release storage
-  _aligned_free(hObject);
-}
+	if (sem_destroy((sem_t *)hObject) < 0) {
+			perror("WDSP:CloseHandle:SemDestroy");
+	} else
+	{
+			// if sem_destroy failed, do not release storage
+			_aligned_free(hObject);
+	}
 #endif
-
-return;
+	return;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////

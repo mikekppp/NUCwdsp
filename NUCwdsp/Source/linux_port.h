@@ -35,20 +35,10 @@ john.d.melton@googlemail.com
 #include <unistd.h>
 
 #define CRITICAL_SECTION pthread_mutex_t
-#define byte unsigned char
-#define String char *
-#define LONG long
-#define DWORD long
-#define HANDLE void *
-#define WINAPI
 #define FALSE 0
 #define TRUE 1
-#define TEXT(x) x
 #define InterlockedIncrement(base) __sync_add_and_fetch(base,1L)
 #define InterlockedDecrement(base) __sync_sub_and_fetch(base,1L)
-
-//#define InterlockedBitTestAndSet(base,bit) __sync_or_and_fetch(base,1L<<bit)
-//#define InterlockedBitTestAndReset(base,bit) __sync_and_and_fetch(base,~(1L<<bit))
 
 #define InterlockedBitTestAndSet(base,bit) __sync_fetch_and_or(base,1L<<bit)
 #define InterlockedBitTestAndReset(base,bit) __sync_fetch_and_and(base,~(1L<<bit))
@@ -56,7 +46,6 @@ john.d.melton@googlemail.com
 #define InterlockedExchange(target,value) __sync_lock_test_and_set(target,value)
 #define InterlockedAnd(base,mask) __sync_fetch_and_and(base,mask)
 #define _InterlockedAnd(base,mask) __sync_fetch_and_and(base,mask)
-#define __declspec(x)
 #define __cdecl
 #define __stdcall
 #define __forceinline
@@ -107,13 +96,13 @@ sem_t *CreateEvent(void* security_attributes,int bManualReset,int bInitialState,
 void LinuxSetEvent(sem_t* sem);
 void LinuxResetEvent(sem_t* sem);
 
-HANDLE _beginthread( void( __cdecl *start_address )( void * ), unsigned stack_size, void *arglist);
+void * _beginthread( void(*start_address )( void * ), unsigned stack_size, void *arglist);
 
 void _endthread(void);
 
-void SetThreadPriority(HANDLE thread, int priority);
+void SetThreadPriority(void *thread, int priority);
 
-void CloseHandle(HANDLE hObject);
+void CloseHandle(void *hObject);
 
 #endif
 

@@ -144,7 +144,7 @@ void setSize_fmmod (FMMOD a, int size)
 *																										*
 ********************************************************************************************************/
 
-PORT
+ 
 void SetTXAFMDeviation (int channel, double deviation)
 {
 	FMMOD a = txa[channel].fmmod.p;
@@ -163,7 +163,7 @@ void SetTXAFMDeviation (int channel, double deviation)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXACTCSSFreq (int channel, double freq)
 {
 	FMMOD a;
@@ -175,7 +175,7 @@ void SetTXACTCSSFreq (int channel, double freq)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXACTCSSRun (int channel, int run)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -183,7 +183,7 @@ void SetTXACTCSSRun (int channel, int run)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAFMNC (int channel, int nc)
 {
 	FMMOD a;
@@ -200,7 +200,7 @@ void SetTXAFMNC (int channel, int nc)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT 
+  
 void SetTXAFMMP (int channel, int mp)
 {
 	FMMOD a;
@@ -212,7 +212,7 @@ void SetTXAFMMP (int channel, int mp)
 	}
 }
 
-PORT
+ 
 void SetTXAFMAFFreqs (int channel, double low, double high)
 {
 	FMMOD a;

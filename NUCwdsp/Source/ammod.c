@@ -100,8 +100,7 @@ void setSize_ammod (AMMOD a, int size)
 *																										*
 ********************************************************************************************************/
 
-PORT void
-SetTXAAMCarrierLevel (int channel, double c_level)
+void SetTXAAMCarrierLevel (int channel, double c_level)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
 	txa[channel].ammod.p->c_level = c_level;

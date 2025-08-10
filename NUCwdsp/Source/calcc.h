@@ -72,13 +72,13 @@ typedef struct _calcc
 	double txdel;
 	BLDR ccbld;
 	volatile long savecorr_bypass;
-	HANDLE Sem_SaveCorr;
+	void * Sem_SaveCorr;
 	volatile long restcorr_bypass;
-	HANDLE Sem_RestCorr;
+	void * Sem_RestCorr;
 	volatile long calccorr_bypass;
-	HANDLE Sem_CalcCorr;
+	void * Sem_CalcCorr;
 	volatile long turnoff_bypass;
-	HANDLE Sem_TurnOff;
+	void * Sem_TurnOff;
 	struct _ctrl
 	{
 		double moxdelay;
@@ -96,7 +96,7 @@ typedef struct _calcc
 		int* sbase;
 		int full_ints;
 		int calcinprogress;
-		volatile LONG calcdone;
+		volatile long calcdone;
 		int waitsamps;
 		int waitcount;
 		double env_maxtx;
@@ -140,15 +140,15 @@ extern void destroy_calcc (CALCC a);
 
 extern void flush_calcc (CALCC a);
 
-extern __declspec(dllexport) void pscc (int channel, int size, double* tx, double* rx);
+extern void pscc (int channel, int size, double* tx, double* rx);
 
-extern void __cdecl PSSaveCorrection(void* pargs);
+extern void PSSaveCorrection(void* pargs);
 
-extern void __cdecl PSRestoreCorrection(void* pargs);
+extern void PSRestoreCorrection(void* pargs);
 
-extern void __cdecl doPSCalcCorrection(void* arg);
+extern void doPSCalcCorrection(void* arg);
 
-extern void __cdecl doPSTurnoff(void* arg);
+extern void doPSTurnoff(void* arg);
 
 #endif
 

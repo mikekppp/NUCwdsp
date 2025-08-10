@@ -51,7 +51,7 @@ typedef struct _dp
 	int begin_ss;											// number of first sub-span that is NOT completely clipped off
 	int end_ss;												// number of last sub-span that is NOT completely clipped off
 	int ss_bins[dMAX_STITCH];								// number of bins delivered by eliminate()/Celiminate in each sub-span
-	volatile LONG input_busy[dMAX_STITCH][dMAX_NUM_FFT];
+	volatile long input_busy[dMAX_STITCH][dMAX_NUM_FFT];
 	int num_pixels;											// number of pixels requested
 	int num_stitch;											// number of results to be stitched together to generate the pixel frame
 	unsigned long long stitch_flag;
@@ -74,7 +74,7 @@ typedef struct _dp
 	int w_pix_buff[dMAX_PIXOUTS];							// number of pixel buffer owned by writing process
 	int r_pix_buff[dMAX_PIXOUTS];							// number of pixel buffer owned by reading process
 	int last_pix_buff[dMAX_PIXOUTS];						// number of the last pixel buffer written
-	volatile LONG pb_ready[dMAX_PIXOUTS][dNUM_PIXEL_BUFFS];	// if value is 0, this data has already been read; 1 = fresh data to read
+	volatile long pb_ready[dMAX_PIXOUTS][dNUM_PIXEL_BUFFS];	// if value is 0, this data has already been read; 1 = fresh data to read
 	int num_average[dMAX_PIXOUTS];							// number of spans to average to create the pixels
 	int avail_frames[dMAX_PIXOUTS];							// number of pixel frames currently available to average
 	int av_in_idx[dMAX_PIXOUTS];							// input index in averaging pixel buffer ring
@@ -97,7 +97,7 @@ typedef struct _dp
 	double *fft_in[dMAX_STITCH][dMAX_NUM_FFT];				// pointers to fftw real input vectors
 	fftw_complex *Cfft_in[dMAX_STITCH][dMAX_NUM_FFT];		// pointers to fftw complex input vectors
 	fftw_complex *fft_out[dMAX_STITCH][dMAX_NUM_FFT];		// pointers to fftw complex output vectors
-	volatile LONG *pnum_threads;							// pointer to current number of active worker threads
+	volatile long *pnum_threads;							// pointer to current number of active worker threads
 	int stop;												// when set, fft threads will be returned to the pool
 	int end_dispatcher;										// set this flag to one to destroy the dispatcher thread
 	volatile int dispatcher;								// one if the dispatcher thread is alive & active
@@ -114,11 +114,11 @@ typedef struct _dp
 	int IQout_index[dMAX_STITCH][dMAX_NUM_FFT];				// current output index for I_samples[ss][LO] and Q_samples[ss][LO]
 	int IQO_idx[dMAX_STITCH][dMAX_NUM_FFT];
 	int IQin_index[dMAX_STITCH][dMAX_NUM_FFT];				// current input index for I_samples[ss][LO] and Q_samples[ss][LO]
-	volatile LONG buff_ready[dMAX_STITCH][dMAX_NUM_FFT];	// 1 if buffer ready to read; 0 if needs to be filled
+	volatile long buff_ready[dMAX_STITCH][dMAX_NUM_FFT];	// 1 if buffer ready to read; 0 if needs to be filled
 	int max_writeahead;										// max allowed input samples ahead of where reading output samples
 
-	volatile LONG snap[dMAX_STITCH][dMAX_NUM_FFT];			// set to 1 to allow a snap of raw spectrum data
-	HANDLE hSnapEvent[dMAX_STITCH][dMAX_NUM_FFT];			// mutex handles; mutexes will be used to signal a snap is complete
+	volatile long snap[dMAX_STITCH][dMAX_NUM_FFT];			// set to 1 to allow a snap of raw spectrum data
+	void * hSnapEvent[dMAX_STITCH][dMAX_NUM_FFT];			// mutex handles; mutexes will be used to signal a snap is complete
 	double *snap_buff[dMAX_STITCH][dMAX_NUM_FFT];			// pointers to buffers for the snap
 
 	CRITICAL_SECTION PB_ControlsSection[dMAX_PIXOUTS];
@@ -159,13 +159,11 @@ typedef struct _dp
 
 extern DP pdisp[];
 
-extern __declspec( dllexport )
-void CreateAnalyzer (	int disp,
-						int *success,
-						char *app_data_path);
+extern void CreateAnalyzer (int disp,
+							int *success,
+							char *app_data_path);
 
-extern __declspec( dllexport )
-void XCreateAnalyzer (	int disp,
+extern void XCreateAnalyzer (	int disp,
 						int *success,	//writes '0' to success if all went well, <0 if mem alloc failed
 						int m_size,		//maximum fft size to be used
 						int m_LO,		//maximum number of LO positions per subspan
@@ -173,43 +171,41 @@ void XCreateAnalyzer (	int disp,
 						char *app_data_path
 					 );
 
-extern __declspec( dllexport )   
-void DestroyAnalyzer(int disp);
+extern void DestroyAnalyzer(int disp);
 
-extern __declspec( dllexport )   
-void SetCalibration (	int disp,
+extern void SetCalibration (	int disp,
 						int set_num,				//identifier for this calibration data set
 						int n_points,				//number of calibration points in the set
 						double (*cal)[dMAX_M+1]		//pointer to the calibration table, first
 					);
 
-extern __declspec( dllexport )   
+extern
 void OpenBuffer(int disp, int ss, int LO, void **Ipointer, void **Qpointer);
 
-extern __declspec( dllexport )   
+extern
 void CloseBuffer(int disp, int ss, int LO);
 
-extern __declspec( dllexport )
+extern
 void Spectrum(int disp, int ss, int LO, dINREAL* pI, dINREAL* pQ);
 
-extern __declspec( dllexport )
+extern
 void Spectrum2(int run, int disp, int ss, int LO, dINREAL* pbuff);
 
-extern __declspec( dllexport )
+extern
 void Spectrum0(int run, int disp, int ss, int LO, double* pbuff);
 
-extern __declspec( dllexport )
+extern
 void SnapSpectrum(	int disp,
 					int ss,
 					int LO,
 					double *snap_buff);
 
-extern __declspec( dllexport )
+extern 
 void SnapSpectrumTimeout (int disp,
 	                      int ss,
 	                      int LO,
 	                      double* snap_buff,
-	                      DWORD timeout,
+						  long timeout,
 	                      int* flag);
 
 #endif

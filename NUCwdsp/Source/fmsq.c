@@ -232,7 +232,7 @@ void setSize_fmsq (FMSQ a, int size)
 *																										*
 ********************************************************************************************************/
 
-PORT
+ 
 void SetRXAFMSQRun (int channel, int run)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -240,7 +240,7 @@ void SetRXAFMSQRun (int channel, int run)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetRXAFMSQThreshold (int channel, double threshold)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -249,7 +249,7 @@ void SetRXAFMSQThreshold (int channel, double threshold)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetRXAFMSQNC (int channel, int nc)
 {
 	FMSQ a;
@@ -266,7 +266,7 @@ void SetRXAFMSQNC (int channel, int nc)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT 
+  
 void SetRXAFMSQMP (int channel, int mp)
 {
 	FMSQ a;

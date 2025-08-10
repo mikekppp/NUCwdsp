@@ -371,7 +371,7 @@ void setSize_wcpagc (WCPAGC a, int size)
 *																										*
 ********************************************************************************************************/
 
-PORT void
+  void
 SetRXAAGCMode (int channel, int mode)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -414,7 +414,7 @@ SetRXAAGCMode (int channel, int mode)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT void
+  void
 SetRXAAGCAttack (int channel, int attack)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -423,7 +423,7 @@ SetRXAAGCAttack (int channel, int attack)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT void
+  void
 SetRXAAGCDecay (int channel, int decay)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -432,7 +432,7 @@ SetRXAAGCDecay (int channel, int decay)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT void
+  void
 SetRXAAGCHang (int channel, int hang)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -441,7 +441,7 @@ SetRXAAGCHang (int channel, int hang)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT void				
+  void				
 GetRXAAGCHangLevel(int channel, double *hangLevel)
 //for line on bandscope
 {
@@ -450,7 +450,7 @@ GetRXAAGCHangLevel(int channel, double *hangLevel)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT void			
+  void			
 SetRXAAGCHangLevel(int channel, double hangLevel)
 //for line on bandscope
 {
@@ -469,7 +469,7 @@ SetRXAAGCHangLevel(int channel, double hangLevel)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT void				
+  void				
 GetRXAAGCHangThreshold(int channel, int *hangthreshold)
 //for slider in setup
 {
@@ -478,7 +478,7 @@ GetRXAAGCHangThreshold(int channel, int *hangthreshold)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT void
+  void
 SetRXAAGCHangThreshold (int channel, int hangthreshold)
 //For slider in setup
 {
@@ -488,7 +488,7 @@ SetRXAAGCHangThreshold (int channel, int hangthreshold)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT void				
+  void				
 GetRXAAGCThresh(int channel, double *thresh, double size, double rate)
 //for line on bandscope.
 {
@@ -500,7 +500,7 @@ GetRXAAGCThresh(int channel, double *thresh, double size, double rate)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT void				
+  void				
 SetRXAAGCThresh(int channel, double thresh, double size, double rate)
 //for line on bandscope
 {
@@ -514,7 +514,7 @@ SetRXAAGCThresh(int channel, double thresh, double size, double rate)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT void			
+  void			
 GetRXAAGCTop(int channel, double *max_agc)
 //for AGC Max Gain in setup
 {
@@ -523,7 +523,7 @@ GetRXAAGCTop(int channel, double *max_agc)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT void
+  void
 SetRXAAGCTop (int channel, double max_agc)
 //for AGC Max Gain in setup
 {
@@ -533,7 +533,7 @@ SetRXAAGCTop (int channel, double max_agc)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT void
+  void
 SetRXAAGCSlope (int channel, int slope)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -542,7 +542,7 @@ SetRXAAGCSlope (int channel, int slope)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT void
+  void
 SetRXAAGCFixed (int channel, double fixed_agc)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -551,7 +551,7 @@ SetRXAAGCFixed (int channel, double fixed_agc)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT void
+  void
 SetRXAAGCMaxInputLevel (int channel, double level)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -566,7 +566,7 @@ SetRXAAGCMaxInputLevel (int channel, double level)
 *																										*
 ********************************************************************************************************/
 
-PORT void
+  void
 SetTXAALCSt (int channel, int state)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -574,7 +574,7 @@ SetTXAALCSt (int channel, int state)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT void
+  void
 SetTXAALCAttack (int channel, int attack)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -582,7 +582,7 @@ SetTXAALCAttack (int channel, int attack)
 	loadWcpAGC(txa[channel].alc.p);
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
-PORT void
+  void
 SetTXAALCDecay (int channel, int decay)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -591,7 +591,7 @@ SetTXAALCDecay (int channel, int decay)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT void
+  void
 SetTXAALCHang (int channel, int hang)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -600,7 +600,7 @@ SetTXAALCHang (int channel, int hang)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT void
+  void
 SetTXAALCMaxGain (int channel, double maxgain)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -609,7 +609,7 @@ SetTXAALCMaxGain (int channel, double maxgain)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT void
+  void
 SetTXALevelerSt (int channel, int state)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -617,7 +617,7 @@ SetTXALevelerSt (int channel, int state)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT void
+  void
 SetTXALevelerAttack (int channel, int attack)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -626,7 +626,7 @@ SetTXALevelerAttack (int channel, int attack)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT void
+  void
 SetTXALevelerDecay (int channel, int decay)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -635,7 +635,7 @@ SetTXALevelerDecay (int channel, int decay)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT void
+  void
 SetTXALevelerHang (int channel, int hang)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -644,7 +644,7 @@ SetTXALevelerHang (int channel, int hang)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT void
+  void
 SetTXALevelerTop (int channel, double maxgain)
 {
 	EnterCriticalSection (&ch[channel].csDSP);

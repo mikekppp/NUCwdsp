@@ -33,7 +33,7 @@ warren@wpratt.com
 *																										*
 ********************************************************************************************************/
 
-PORT
+ 
 void *malloc0 (int size)
 {
 	void* p = _aligned_malloc(size, 16);
@@ -44,7 +44,7 @@ void *malloc0 (int size)
 #if !defined(linux) && !defined(__APPLE__)
 // Exported calls
 
-PORT void
+  void
 *NewCriticalSection()
 {	// used by VAC
 	LPCRITICAL_SECTION cs_ptr;
@@ -52,7 +52,7 @@ PORT void
 	return (void *)cs_ptr;
 }
 
-PORT void
+  void
 DestroyCriticalSection (LPCRITICAL_SECTION cs_ptr)
 {	// used by VAC
 	free ((char *)cs_ptr);
@@ -88,7 +88,7 @@ void print_impulse (const char* filename, int N, double* impulse, int rtype, int
 }
 }
 
-PORT
+ 
 void analyze_bandpass_filter (int N, double f_low, double f_high, double samplerate, int wintype, int rtype, double scale)
 {
 	double* linphase_imp;
@@ -185,7 +185,7 @@ void print_iqc_values (const char* filename, int state, double env_in, double I,
 	}
 }
 
-PORT
+ 
 void print_buffer_parameters (const char* filename, int channel)
 {
 	IOB a = ch[channel].iob.pc;
@@ -292,7 +292,7 @@ void print_deviation (const char* filename, double dpmax, double rate)
 	}
 }
 
-void __cdecl CalccPrintSamples (void *pargs)
+void CalccPrintSamples (void *pargs)
 {
 	int i;
 	double env_tx, env_rx;
@@ -338,168 +338,6 @@ void print_anb_parms (const char* filename, ANB a)
 	}
 }
 
-#if !defined(linux) && !defined(__APPLE__)
-// Audacity:  Import Raw Data, Signed 32-bit PCM, Little-endian, Mono/Stereo per mode selection, 48K rate
-
-int audiocount = 0;
-int* data = 0;
-int ready = 0;
-int done = 0;
-
-void WriteAudioFile(void* arg)
-{
-	byte* dat = (byte *)arg;
-	FILE* file;
-	// reverse bits of each byte (possibly needed on some platforms)
-	// int i;
-	// byte b;
-	// for (i = 0; i < 4 * audiocount; i++)
-	// {
-	//	b = dat[i];
-	// 	b = ((b >> 1) & 0x55) | ((b << 1) & 0xaa);
-	// 	b = ((b >> 2) & 0x33) | ((b << 2) & 0xcc);
-	// 	b = ((b >> 4) & 0x0f) | ((b << 4) & 0xf0);
-	// 	dat[i] = b;
-	// }
-	if (file = fopen("AudioFile", "wb"))
-	{
-	fwrite((int *)dat, sizeof(int), audiocount, file);
-	fflush(file);
-	fclose(file);
-	}
-	_aligned_free(data);
-	data = 0;
-	_endthread();
-}
-
-void WriteAudioWDSP (double seconds, int rate, int size, double* indata, int mode, double gain)
-{
-	// seconds - number of seconds of audio to record
-	// rate - sample rate
-	// size - number of complex samples
-	// indata - pointer to data
-	static int n;
-	int i;
-	const double conv = 2147483647.0 * gain;
-	if (!ready)
-	{
-		if (mode != 3)
-			n = (int)(seconds * rate);
-		else
-			n = 2 * (int)(seconds * rate);
-		ready = 1;
-	}
-	if (!data) data = (int*)malloc0(n * sizeof(int));
-	for (i = 0; i < size; i++)
-	{
-		if (audiocount < n)
-		{
-			switch (mode)
-			{
-			case 0:	// I only (mono)
-				data[audiocount++] = (int)(conv * indata[2 * i + 0]);
-				break;
-			case 1: // Q only (mono)
-				data[audiocount++] = (int)(conv * indata[2 * i + 1]);
-				break;
-			case 2: // envelope (mono)
-				data[audiocount++] = (int)(conv * sqrt(indata[2 * i + 0] * indata[2 * i + 0] + indata[2 * i + 1] * indata[2 * i + 1]));
-				break;
-			case 3:	// complex samples (stereo)
-				data[audiocount++] = (int)(conv * indata[2 * i + 0]);
-				data[audiocount++] = (int)(conv * indata[2 * i + 1]);
-				break;
-            case 4: // double samples (mono)
-                data[audiocount++] = (int)(conv * indata[i]);
-                break;
-			default:	// invalid mode/datatype
-				data[audiocount++] = 0;
-				break;
-			}
-		}
-	}
-	if ((audiocount == n) && !done)
-	{
-		done = 1;
-		_beginthread(WriteAudioFile, 0, (void *)data);
-	}
-}
-
-void WriteScaledAudioFile (void* arg)
-{
-	typedef struct
-	{
-		int n;
-		double* ddata;
-	} *dstr;
-	dstr dstruct = (dstr)arg;
-
-	FILE* file;
-	int i;
-	double max = 0.0;
-	double abs_val;
-	const double conv = 2147483647.0;
-	int *idata = (int *) malloc0 (dstruct->n * sizeof (int));
-
-	for (i = 0; i < dstruct->n; i++)
-	{
-		abs_val = fabs (dstruct->ddata[i]);
-		if (abs_val > max)
-			max = abs_val;
-	}
-	for (i = 0; i < dstruct->n; i++)
-		idata[i] = dstruct->ddata[i] >= 0.0 ? (int)floor(conv * dstruct->ddata[i] / max + 0.5) : (int)ceil(conv * dstruct->ddata[i] / max - 0.5);
-	if (file = fopen("AudioFile", "wb"))
-	{
-	fwrite(idata, sizeof(int), dstruct->n, file);
-	fflush(file);
-	fclose(file);
-	}
-	_aligned_free (dstruct->ddata);
-	_aligned_free (dstruct);
-	_aligned_free (idata);
-	_endthread();
-}
-
-void WriteScaledAudio (
-	double seconds,			// number of seconds of audio to record
-	int rate,				// sample rate
-	int size,				// incoming buffer size
-	double* indata )		// pointer to incoming data buffer
-{
-	static int ready;
-	typedef struct
-	{
-		int n;
-		double* ddata;
-	} dstr, *DSTR;
-	static DSTR dstruct;
-
-	static int count, complete;
-	int i;
-	
-	if (!ready)
-	{
-		dstruct = (DSTR) malloc0 (sizeof (dstr));
-		dstruct->n = 2 * (int)(seconds * rate);
-		dstruct->ddata = (double *) malloc0 (dstruct->n * sizeof (double));
-		ready = 1;
-	}
-	for (i = 0; i < size; i++)
-	{
-		if (count < dstruct->n)
-		{
-			dstruct->ddata[count++] = indata[2 * i + 0];
-			dstruct->ddata[count++] = indata[2 * i + 1];
-		}
-	}
-	if ((count >= dstruct->n) && !complete)
-	{
-		complete = 1;
-		_beginthread (WriteScaledAudioFile, 0, (void *)dstruct);
-	}
-}
-#endif
 
 /********************************************************************************************************
 *																										*
@@ -554,7 +392,7 @@ void print_bandpass_response (const char* filename, int points, double* response
 
 BFCU pbfcu[4];
 
-PORT
+ 
 int create_bfcu(int id, int min_size, int max_size, double rate, double corner, int points)
 {
 	// id - from 0 through 3
@@ -591,7 +429,7 @@ int create_bfcu(int id, int min_size, int max_size, double rate, double corner, 
 	return 0;
 }
 
-PORT
+ 
 void destroy_bfcu(int id)
 {
 	BFCU a = pbfcu[id];
@@ -606,7 +444,7 @@ void destroy_bfcu(int id)
 	_aligned_free(a);
 }
 
-PORT
+ 
 void getFilterCorners(int id, int* lower_index, int* upper_index)
 {
 	// stores the index of the lower corner and the index of the upper corner at the pointers given.
@@ -615,7 +453,7 @@ void getFilterCorners(int id, int* lower_index, int* upper_index)
 	*upper_index = a->i_upper_corner;
 }
 
-PORT 
+  
 void getFilterCurve(int id, int size, int w_type, int index_low, int index_high, double* segment)
 {
 	// size = filter_size

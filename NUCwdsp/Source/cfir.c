@@ -229,7 +229,7 @@ double* cfir_impulse (int N, int DD, int R, int Pairs, double runrate, double ci
 *																										*
 ********************************************************************************************************/
 
-PORT
+
 void SetTXACFIRRun (int channel, int run)
 {
 	EnterCriticalSection(&ch[channel].csDSP);
@@ -237,7 +237,7 @@ void SetTXACFIRRun (int channel, int run)
 	LeaveCriticalSection(&ch[channel].csDSP);
 }
 
-PORT
+
 void SetTXACFIRNC(int channel, int nc)
 {
 	// NOTE:  'nc' must be >= 'size'

@@ -275,7 +275,7 @@ void setSize_eqp (EQP a, int size)
 *																										*
 ********************************************************************************************************/
 
-PORT
+ 
 void SetRXAEQRun (int channel, int run)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -283,7 +283,7 @@ void SetRXAEQRun (int channel, int run)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetRXAEQNC (int channel, int nc)
 {
 	EQP a;
@@ -300,7 +300,7 @@ void SetRXAEQNC (int channel, int nc)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetRXAEQMP (int channel, int mp)
 {
 	EQP a;
@@ -312,7 +312,7 @@ void SetRXAEQMP (int channel, int mp)
 	}
 }
 
-PORT
+ 
 void SetRXAEQProfile (int channel, int nfreqs, double* F, double* G)
 {
 	EQP a;
@@ -331,7 +331,7 @@ void SetRXAEQProfile (int channel, int nfreqs, double* F, double* G)
 	_aligned_free (impulse);
 }
 
-PORT
+ 
 void SetRXAEQCtfmode (int channel, int mode)
 {
 	EQP a;
@@ -343,7 +343,7 @@ void SetRXAEQCtfmode (int channel, int mode)
 	_aligned_free (impulse);
 }
 
-PORT
+ 
 void SetRXAEQWintype (int channel, int wintype)
 {
 	EQP a;
@@ -355,7 +355,7 @@ void SetRXAEQWintype (int channel, int wintype)
 	_aligned_free (impulse);
 }
 
-PORT
+ 
 void SetRXAGrphEQ (int channel, int *rxeq)
 {	// three band equalizer (legacy compatibility)
 	EQP a;
@@ -381,7 +381,7 @@ void SetRXAGrphEQ (int channel, int *rxeq)
 	_aligned_free (impulse);
 }
 
-PORT
+ 
 void SetRXAGrphEQ10 (int channel, int *rxeq)
 {	// ten band equalizer (legacy compatibility)
 	EQP a;
@@ -418,7 +418,7 @@ void SetRXAGrphEQ10 (int channel, int *rxeq)
 *																										*
 ********************************************************************************************************/
 
-PORT
+ 
 void SetTXAEQRun (int channel, int run)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -426,7 +426,7 @@ void SetTXAEQRun (int channel, int run)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAEQNC (int channel, int nc)
 {
 	EQP a;
@@ -443,7 +443,7 @@ void SetTXAEQNC (int channel, int nc)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAEQMP (int channel, int mp)
 {
 	EQP a;
@@ -455,7 +455,7 @@ void SetTXAEQMP (int channel, int mp)
 	}
 }
 
-PORT
+ 
 void SetTXAEQProfile (int channel, int nfreqs, double* F, double* G)
 {
 	EQP a;
@@ -473,7 +473,7 @@ void SetTXAEQProfile (int channel, int nfreqs, double* F, double* G)
 	_aligned_free (impulse);
 }
 
-PORT
+ 
 void SetTXAEQCtfmode (int channel, int mode)
 {
 	EQP a;
@@ -485,7 +485,7 @@ void SetTXAEQCtfmode (int channel, int mode)
 	_aligned_free (impulse);
 }
 
-PORT
+ 
 void SetTXAEQWintype (int channel, int wintype)
 {
 	EQP a;
@@ -497,7 +497,7 @@ void SetTXAEQWintype (int channel, int wintype)
 	_aligned_free (impulse);
 }
 
-PORT
+ 
 void SetTXAGrphEQ (int channel, int *txeq)
 {	// three band equalizer (legacy compatibility)
 	EQP a;
@@ -523,7 +523,7 @@ void SetTXAGrphEQ (int channel, int *txeq)
 	_aligned_free (impulse);
 }
 
-PORT
+ 
 void SetTXAGrphEQ10 (int channel, int *txeq)
 {	// ten band equalizer (legacy compatibility)
 	EQP a;
@@ -669,7 +669,7 @@ void setSize_eq (EQ a, int size)
 *																										*
 ********************************************************************************************************/
 /*  // UNCOMMENT properties when a pointer is in place in rxa[channel]
-PORT
+ 
 void SetRXAEQRun (int channel, int run)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -677,7 +677,7 @@ void SetRXAEQRun (int channel, int run)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetRXAEQProfile (int channel, int nfreqs, double* F, double* G)
 {
 	EQ a;
@@ -695,7 +695,7 @@ void SetRXAEQProfile (int channel, int nfreqs, double* F, double* G)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetRXAEQCtfmode (int channel, int mode)
 {
 	EQ a;
@@ -707,7 +707,7 @@ void SetRXAEQCtfmode (int channel, int mode)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetRXAEQWintype (int channel, int wintype)
 {
 	EQ a;
@@ -719,7 +719,7 @@ void SetRXAEQWintype (int channel, int wintype)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetRXAGrphEQ (int channel, int *rxeq)
 {	// three band equalizer (legacy compatibility)
 	EQ a;
@@ -745,7 +745,7 @@ void SetRXAGrphEQ (int channel, int *rxeq)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetRXAGrphEQ10 (int channel, int *rxeq)
 {	// ten band equalizer (legacy compatibility)
 	EQ a;
@@ -781,7 +781,7 @@ void SetRXAGrphEQ10 (int channel, int *rxeq)
 *																										*
 ********************************************************************************************************/
 /*  // UNCOMMENT properties when a pointer is in place in rxa[channel]
-PORT
+ 
 void SetTXAEQRun (int channel, int run)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -789,7 +789,7 @@ void SetTXAEQRun (int channel, int run)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAEQProfile (int channel, int nfreqs, double* F, double* G)
 {
 	EQ a;
@@ -807,7 +807,7 @@ void SetTXAEQProfile (int channel, int nfreqs, double* F, double* G)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAEQCtfmode (int channel, int mode)
 {
 	EQ a;
@@ -819,7 +819,7 @@ void SetTXAEQCtfmode (int channel, int mode)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAEQMethod (int channel, int wintype)
 {
 	EQ a;
@@ -831,7 +831,7 @@ void SetTXAEQMethod (int channel, int wintype)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAGrphEQ (int channel, int *txeq)
 {	// three band equalizer (legacy compatibility)
 	EQ a;
@@ -857,7 +857,7 @@ void SetTXAGrphEQ (int channel, int *txeq)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAGrphEQ10 (int channel, int *txeq)
 {	// ten band equalizer (legacy compatibility)
 	EQ a;

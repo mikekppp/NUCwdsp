@@ -26,7 +26,7 @@ warren@wpratt.com
 
 #include "comm.h"
 
-PORT
+ 
 GAIN create_gain (int run, int* prun, int size, double* in, double* out, double Igain, double Qgain)
 {
 	GAIN a = (GAIN) malloc0 (sizeof (gain));
@@ -41,20 +41,20 @@ GAIN create_gain (int run, int* prun, int size, double* in, double* out, double 
 	return a;
 }
 
-PORT
+ 
 void destroy_gain (GAIN a)
 {
 	DeleteCriticalSection (&a->cs_update);
 	_aligned_free (a);
 }
 
-PORT
+ 
 void flush_gain (GAIN a)
 {
 
 }
 
-PORT
+ 
 void xgain (GAIN a)
 {
 	int srun;
@@ -99,7 +99,7 @@ void setSize_gain (GAIN a, int size)
 *																										*
 ********************************************************************************************************/
 
-PORT
+ 
 void pSetTXOutputLevel (GAIN a, double level)
 {
 	EnterCriticalSection (&a->cs_update);
@@ -108,7 +108,7 @@ void pSetTXOutputLevel (GAIN a, double level)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+ 
 void pSetTXOutputLevelRun (GAIN a, int run)
 {
 	EnterCriticalSection (&a->cs_update);
@@ -116,7 +116,7 @@ void pSetTXOutputLevelRun (GAIN a, int run)
 	LeaveCriticalSection (&a->cs_update);
 }
 
-PORT
+ 
 void pSetTXOutputLevelSize (GAIN a, int size)
 {
 	EnterCriticalSection (&a->cs_update);

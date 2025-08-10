@@ -461,7 +461,7 @@ void flush_iobuffs (int channel)
 }
 
 
-PORT	//double, interleaved I/Q
+ 	//double, interleaved I/Q
 void fexchange0 (int channel, double* in, double* out, int* error)
 {
 	int n;
@@ -515,7 +515,7 @@ void fexchange0 (int channel, double* in, double* out, int* error)
 	}
 }
 
-PORT	//separate I/Q buffers
+ 	//separate I/Q buffers
 void fexchange2 (int channel, INREAL *Iin, INREAL *Qin, OUTREAL *Iout, OUTREAL *Qout, int* error)
 {
 	int i, n;

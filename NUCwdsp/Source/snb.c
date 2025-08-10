@@ -576,7 +576,7 @@ void xsnba (SNBA d)
 *																										*
 ********************************************************************************************************/
 
-PORT void SetRXASNBARun (int channel, int run)
+  void SetRXASNBARun (int channel, int run)
 {
 	SNBA a = rxa[channel].snba.p;
 	if (a->run != run)
@@ -592,7 +592,7 @@ PORT void SetRXASNBARun (int channel, int run)
 	}
 }
 
-PORT void SetRXASNBAovrlp (int channel, int ovrlp)
+  void SetRXASNBAovrlp (int channel, int ovrlp)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
 	decalc_snba (rxa[channel].snba.p);
@@ -601,63 +601,63 @@ PORT void SetRXASNBAovrlp (int channel, int ovrlp)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT void SetRXASNBAasize (int channel, int size)
+  void SetRXASNBAasize (int channel, int size)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
 	rxa[channel].snba.p->exec.asize = size;
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT void SetRXASNBAnpasses (int channel, int npasses)
+  void SetRXASNBAnpasses (int channel, int npasses)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
 	rxa[channel].snba.p->exec.npasses = npasses;
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT void SetRXASNBAk1 (int channel, double k1)
+  void SetRXASNBAk1 (int channel, double k1)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
 	rxa[channel].snba.p->sdet.k1 = k1;
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT void SetRXASNBAk2 (int channel, double k2)
+  void SetRXASNBAk2 (int channel, double k2)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
 	rxa[channel].snba.p->sdet.k2 = k2;
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT void SetRXASNBAbridge (int channel, int bridge)
+  void SetRXASNBAbridge (int channel, int bridge)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
 	rxa[channel].snba.p->sdet.b = bridge;
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT void SetRXASNBApresamps (int channel, int presamps)
+  void SetRXASNBApresamps (int channel, int presamps)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
 	rxa[channel].snba.p->sdet.pre = presamps;
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT void SetRXASNBApostsamps (int channel, int postsamps)
+  void SetRXASNBApostsamps (int channel, int postsamps)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
 	rxa[channel].snba.p->sdet.post = postsamps;
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT void SetRXASNBApmultmin (int channel, double pmultmin)
+  void SetRXASNBApmultmin (int channel, double pmultmin)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
 	rxa[channel].snba.p->scan.pmultmin = pmultmin;
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT void SetRXASNBAOutputBandwidth (int channel, double flow, double fhigh)
+  void SetRXASNBAOutputBandwidth (int channel, double flow, double fhigh)
 {
 	SNBA a;
 	RESAMPLE d;
@@ -831,7 +831,7 @@ void recalc_bpsnba_filter (BPSNBA a, int update)
 *																										*
 ********************************************************************************************************/
 
-PORT
+ 
 void RXABPSNBASetNC (int channel, int nc)
 {
 	BPSNBA a;
@@ -846,7 +846,7 @@ void RXABPSNBASetNC (int channel, int nc)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void RXABPSNBASetMP (int channel, int mp)
 {
 	BPSNBA a;

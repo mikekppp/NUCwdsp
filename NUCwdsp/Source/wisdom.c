@@ -29,7 +29,7 @@ warren@wpratt.com
 
 static char status[128];
 
-PORT
+ 
 char* wisdom_get_status(void)
 {
 	if (status[0] == 0)
@@ -37,7 +37,7 @@ char* wisdom_get_status(void)
 	return status;
 }
 
-PORT
+ 
 int WDSPwisdom (char* directory)
 {
 	int wisdom_return = 0; // 0 from existing, 1 rebuilt

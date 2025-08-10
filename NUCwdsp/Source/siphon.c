@@ -186,7 +186,7 @@ void sip_spectrum (SIPHON a)
 *																										*
 ********************************************************************************************************/
 
-PORT
+ 
 void RXAGetaSipF (int channel, float* out, int size)
 {	// return raw samples as floats
 	SIPHON a= rxa[channel].sip1.p;
@@ -201,7 +201,7 @@ void RXAGetaSipF (int channel, float* out, int size)
 	}
 }
 
-PORT
+ 
 void RXAGetaSipF1 (int channel, float* out, int size)
 {	// return raw samples as floats
 	SIPHON a= rxa[channel].sip1.p;
@@ -223,7 +223,7 @@ void RXAGetaSipF1 (int channel, float* out, int size)
 *																										*
 ********************************************************************************************************/
 
-PORT
+ 
 void TXASetSipPosition (int channel, int pos)
 {
 	SIPHON a = txa[channel].sip1.p;
@@ -232,7 +232,7 @@ void TXASetSipPosition (int channel, int pos)
 	LeaveCriticalSection (&a->update);
 }
 
-PORT
+ 
 void TXASetSipMode (int channel, int mode)
 {
 	SIPHON a = txa[channel].sip1.p;
@@ -241,7 +241,7 @@ void TXASetSipMode (int channel, int mode)
 	LeaveCriticalSection (&a->update);
 }
 
-PORT
+ 
 void TXASetSipDisplay (int channel, int disp)
 {
 	SIPHON a = txa[channel].sip1.p;
@@ -250,7 +250,7 @@ void TXASetSipDisplay (int channel, int disp)
 	LeaveCriticalSection (&a->update);
 }
 
-PORT
+ 
 void TXAGetaSipF (int channel, float* out, int size)
 {	// return raw samples as floats
 	SIPHON a = txa[channel].sip1.p;
@@ -265,7 +265,7 @@ void TXAGetaSipF (int channel, float* out, int size)
 	}
 }
 
-PORT
+ 
 void TXAGetaSipF1 (int channel, float* out, int size)
 {	// return raw samples as floats
 	SIPHON a = txa[channel].sip1.p;
@@ -281,7 +281,7 @@ void TXAGetaSipF1 (int channel, float* out, int size)
 	}
 }
 
-PORT
+ 
 void TXASetSipSpecmode (int channel, int mode)
 {
 	SIPHON a = txa[channel].sip1.p;
@@ -291,7 +291,7 @@ void TXASetSipSpecmode (int channel, int mode)
 		InterlockedBitTestAndSet   (&a->specmode, 0);
 }
 
-PORT
+ 
 void TXAGetSpecF1 (int channel, float* out)
 {	// return spectrum magnitudes in dB
 	SIPHON a = txa[channel].sip1.p;
@@ -318,7 +318,7 @@ void TXAGetSpecF1 (int channel, float* out)
 		}
 }
 
-PORT
+ 
 void TXASetSipAllocDisps (int channel, int n_alloc_disps, int* alloc_run, int* alloc_disp)
 {
 	SIPHON a = txa[channel].sip1.p;
@@ -340,28 +340,28 @@ void TXASetSipAllocDisps (int channel, int n_alloc_disps, int* alloc_run, int* a
 ********************************************************************************************************/
 
 #define MAX_EXT_SIPHONS	(2)									// maximum number of Siphons called from outside wdsp
-__declspec (align (16)) SIPHON psiphon[MAX_EXT_SIPHONS];	// array of pointers for Siphons used EXTERNAL to wdsp
+SIPHON psiphon[MAX_EXT_SIPHONS];	// array of pointers for Siphons used EXTERNAL to wdsp
 
 
-PORT
+ 
 void create_siphonEXT (int id, int run, int insize, int sipsize, int fftsize, int specmode)
 {
 	psiphon[id] = create_siphon (run, 0, 0, 0, insize, 0, sipsize, fftsize, specmode);
 }
 
-PORT
+ 
 void destroy_siphonEXT (int id)
 {
 	destroy_siphon (psiphon[id]);
 }
 
-PORT
+ 
 void flush_siphonEXT (int id)
 {
 	flush_siphon (psiphon[id]);
 }
 
-PORT
+ 
 void xsiphonEXT (int id, double* buff)
 {
 	SIPHON a = psiphon[id];
@@ -369,7 +369,7 @@ void xsiphonEXT (int id, double* buff)
 	xsiphon (a, 0);
 }
 
-PORT
+ 
 void GetaSipF1EXT (int id, float* out, int size)
 {	// return raw samples as floats
 	SIPHON a = psiphon[id];
@@ -385,7 +385,7 @@ void GetaSipF1EXT (int id, float* out, int size)
 	}
 }
 
-PORT
+ 
 void SetSiphonInsize (int id, int size)
 {
 	SIPHON a = psiphon[id];

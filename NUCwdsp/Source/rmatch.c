@@ -297,7 +297,7 @@ void upslew (RMATCH a, int newsamps)
 	}
 }
 
-PORT
+ 
 void xrmatchIN (void* b, double* in)
 {
 	RMATCH a = (RMATCH)b;
@@ -424,7 +424,7 @@ void dslew (RMATCH a)
 	a->iin = (a->iout + a->n_ring) % a->rsize; //
 }
 
-PORT
+ 
 void xrmatchOUT (void* b, double* out)
 {
 	RMATCH a = (RMATCH)b;
@@ -466,7 +466,7 @@ void xrmatchOUT (void* b, double* out)
 	}
 }
 
-PORT
+ 
 void getRMatchDiags (void* b, int* underflows, int* overflows, double* var, int* ringsize, int* nring)
 {
 	RMATCH a = (RMATCH)b;
@@ -479,7 +479,7 @@ void getRMatchDiags (void* b, int* underflows, int* overflows, double* var, int*
 	LeaveCriticalSection (&a->cs_var);
 }
 
-PORT
+ 
 void resetRMatchDiags (void* b)
 {
 	RMATCH a = (RMATCH)b;
@@ -487,7 +487,7 @@ void resetRMatchDiags (void* b)
 	InterlockedExchange (&a->overflows,  0);
 }
 
-PORT
+ 
 void forceRMatchVar (void* b, int force, double fvar)
 {
 	RMATCH a = (RMATCH)b;
@@ -497,7 +497,7 @@ void forceRMatchVar (void* b, int force, double fvar)
 	LeaveCriticalSection (&a->cs_var);
 }
 
-PORT
+ 
 void* create_rmatchV(int in_size, int out_size, int nom_inrate, int nom_outrate, int ringsize, double var)
 {
 	return (void*)create_rmatch (
@@ -526,14 +526,14 @@ void* create_rmatchV(int in_size, int out_size, int nom_inrate, int nom_outrate,
 		0.003 );				// slew time (seconds)
 }
 
-PORT
+ 
 void destroy_rmatchV (void* ptr)
 {
 	RMATCH a = (RMATCH)ptr;
 	destroy_rmatch (a);
 }
 
-PORT
+ 
 void setRMatchInsize (void* ptr, int insize)
 {
 	RMATCH a = (RMATCH)ptr;
@@ -545,7 +545,7 @@ void setRMatchInsize (void* ptr, int insize)
 	InterlockedBitTestAndSet (&a->run, 0);
 }
 
-PORT
+ 
 void setRMatchOutsize (void* ptr, int outsize)
 {
 	RMATCH a = (RMATCH)ptr;
@@ -557,7 +557,7 @@ void setRMatchOutsize (void* ptr, int outsize)
 	InterlockedBitTestAndSet (&a->run, 0);
 }
 
-PORT
+ 
 void setRMatchNomInrate (void* ptr, int nom_inrate)
 {
 	RMATCH a = (RMATCH)ptr;
@@ -569,7 +569,7 @@ void setRMatchNomInrate (void* ptr, int nom_inrate)
 	InterlockedBitTestAndSet (&a->run, 0);
 }
 
-PORT
+ 
 void setRMatchNomOutrate (void* ptr, int nom_outrate)
 {
 	RMATCH a = (RMATCH)ptr;
@@ -581,7 +581,7 @@ void setRMatchNomOutrate (void* ptr, int nom_outrate)
 	InterlockedBitTestAndSet (&a->run, 0);
 }
 
-PORT
+ 
 void setRMatchRingsize (void* ptr, int ringsize)
 {
 	RMATCH a = (RMATCH)ptr;
@@ -593,7 +593,7 @@ void setRMatchRingsize (void* ptr, int ringsize)
 	InterlockedBitTestAndSet (&a->run, 0);
 }
 
-PORT
+ 
 void setRMatchFeedbackGain (void* b, double feedback_gain)
 {
 	RMATCH a = (RMATCH)b;
@@ -603,7 +603,7 @@ void setRMatchFeedbackGain (void* b, double feedback_gain)
 	LeaveCriticalSection(&a->cs_var);
 }
 
-PORT
+ 
 void setRMatchSlewTime (void* b, double slew_time)
 {
 	RMATCH a = (RMATCH)b;
@@ -615,7 +615,7 @@ void setRMatchSlewTime (void* b, double slew_time)
 	InterlockedBitTestAndSet(&a->run, 0);		// turn ON the dataflow
 }
 
-PORT
+ 
 void setRMatchSlewTime1(void* b, double slew_time)
 {
 	RMATCH a = (RMATCH)b;
@@ -638,7 +638,7 @@ void setRMatchSlewTime1(void* b, double slew_time)
 	InterlockedBitTestAndSet(&a->run, 0);
 }
 
-PORT
+ 
 void setRMatchPropRingMin(void* ptr, int prop_min)
 {
 	RMATCH a = (RMATCH)ptr;
@@ -650,7 +650,7 @@ void setRMatchPropRingMin(void* ptr, int prop_min)
 	InterlockedBitTestAndSet(&a->run, 0);
 }
 
-PORT
+ 
 void setRMatchPropRingMax(void* ptr, int prop_max)
 {
 	RMATCH a = (RMATCH)ptr;
@@ -662,7 +662,7 @@ void setRMatchPropRingMax(void* ptr, int prop_max)
 	InterlockedBitTestAndSet(&a->run, 0);
 }
 
-PORT
+ 
 void setRMatchFFRingMin(void* ptr, int ff_ringmin)
 {
 	RMATCH a = (RMATCH)ptr;
@@ -674,7 +674,7 @@ void setRMatchFFRingMin(void* ptr, int ff_ringmin)
 	InterlockedBitTestAndSet(&a->run, 0);
 }
 
-PORT
+ 
 void setRMatchFFRingMax(void* ptr, int ff_ringmax)
 {
 	RMATCH a = (RMATCH)ptr;
@@ -686,7 +686,7 @@ void setRMatchFFRingMax(void* ptr, int ff_ringmax)
 	InterlockedBitTestAndSet(&a->run, 0);
 }
 
-PORT
+ 
 void setRMatchFFAlpha(void* ptr, double ff_alpha)
 {
 	RMATCH a = (RMATCH)ptr;
@@ -696,7 +696,7 @@ void setRMatchFFAlpha(void* ptr, double ff_alpha)
 	InterlockedBitTestAndSet(&a->run, 0);
 }
 
-PORT
+ 
 void getControlFlag(void* ptr, int* control_flag)
 {
 	RMATCH a = (RMATCH)ptr;
@@ -707,7 +707,7 @@ void getControlFlag(void* ptr, int* control_flag)
 
 // the following function is DEPRECATED
 // it is intended for Legacy PowerSDR use only
-PORT
+ 
 void* create_rmatchLegacyV(int in_size, int out_size, int nom_inrate, int nom_outrate, int ringsize)
 {
 	return (void*)create_rmatch(

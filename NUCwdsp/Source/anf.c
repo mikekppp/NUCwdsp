@@ -163,7 +163,7 @@ void setSize_anf (ANF a, int size)
 *																										*
 ********************************************************************************************************/
 
-PORT void
+void
 SetRXAANFRun (int channel, int run)
 {
 	ANF a = rxa[channel].anf.p;
@@ -180,7 +180,7 @@ SetRXAANFRun (int channel, int run)
 }
 
 
-PORT void
+void
 SetRXAANFVals (int channel, int taps, int delay, double gain, double leakage)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -192,7 +192,7 @@ SetRXAANFVals (int channel, int taps, int delay, double gain, double leakage)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT void
+void
 SetRXAANFTaps (int channel, int taps)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -201,7 +201,7 @@ SetRXAANFTaps (int channel, int taps)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT void
+void
 SetRXAANFDelay (int channel, int delay)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -210,7 +210,7 @@ SetRXAANFDelay (int channel, int delay)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT void
+void
 SetRXAANFGain (int channel, double gain)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -219,7 +219,7 @@ SetRXAANFGain (int channel, double gain)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT void
+void
 SetRXAANFLeakage (int channel, double leakage)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -228,7 +228,7 @@ SetRXAANFLeakage (int channel, double leakage)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT void
+void
 SetRXAANFPosition (int channel, int position)
 {
 	EnterCriticalSection (&ch[channel].csDSP);

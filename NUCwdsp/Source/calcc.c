@@ -482,7 +482,7 @@ cleanup:
 	return;
 }
 
-void __cdecl doPSCalcCorrection (void *arg)
+void doPSCalcCorrection (void *arg)
 {
 	CALCC a = (CALCC)arg;
 	while (!InterlockedAnd(&a->calccorr_bypass, 0xffffffff))
@@ -506,7 +506,7 @@ void __cdecl doPSCalcCorrection (void *arg)
 	InterlockedBitTestAndReset(&a->calccorr_bypass, 0);
 }
 
-void __cdecl doPSTurnoff (void *arg)
+void doPSTurnoff (void *arg)
 {
 	CALCC a = (CALCC)arg;
 	while (!InterlockedAnd(&a->turnoff_bypass, 0xffffffff))
@@ -536,7 +536,7 @@ enum _calcc_state
 	LTURNON
 };
 
-void __cdecl PSSaveCorrection (void *pargs)
+void PSSaveCorrection (void *pargs)
 {
 	int i, k;
 	CALCC a = (CALCC)pargs;
@@ -569,7 +569,7 @@ void __cdecl PSSaveCorrection (void *pargs)
 	InterlockedBitTestAndReset(&a->savecorr_bypass, 0);
 }
 
-void __cdecl PSRestoreCorrection(void *pargs)
+void PSRestoreCorrection(void *pargs)
 {
 	int i, k;
 	CALCC a = (CALCC)pargs;
@@ -613,7 +613,7 @@ void __cdecl PSRestoreCorrection(void *pargs)
 *																										*
 ********************************************************************************************************/
 
-PORT
+
 void pscc (int channel, int size, double* tx, double* rx)
 {
 	int i, n, m;
@@ -836,7 +836,7 @@ void pscc (int channel, int size, double* tx, double* rx)
 	LeaveCriticalSection (&txa[channel].calcc.cs_update);
 }
 
-PORT 
+
 void psccF (int channel, int size, float *Itxbuff, float *Qtxbuff, float *Irxbuff, float *Qrxbuff, int mox, int solidmox)
 {
 	int i;
@@ -856,7 +856,7 @@ void psccF (int channel, int size, float *Itxbuff, float *Qtxbuff, float *Irxbuf
 	pscc (channel, size, a->temptx, a->temprx);
 }
 
-PORT
+
 void PSSaveCorr (int channel, char* filename)
 {
 	CALCC a;
@@ -868,7 +868,7 @@ void PSSaveCorr (int channel, char* filename)
 	LeaveCriticalSection (&txa[channel].calcc.cs_update);
 }
 
-PORT
+
 void PSRestoreCorr (int channel, char* filename)
 {
 	CALCC a;
@@ -887,7 +887,7 @@ void PSRestoreCorr (int channel, char* filename)
 *																										*
 ********************************************************************************************************/
 
-PORT
+
 void SetPSRunCal (int channel, int run)
 {
 	CALCC a;
@@ -897,7 +897,7 @@ void SetPSRunCal (int channel, int run)
 	LeaveCriticalSection (&txa[channel].calcc.cs_update);
 }
 
-PORT
+
 void SetPSMox (int channel, int mox)
 {
 	CALCC a = txa[channel].calcc.p;;
@@ -910,7 +910,7 @@ void SetPSMox (int channel, int mox)
 	}
 }
 
-PORT 
+
 void GetPSInfo (int channel, int *info)
 {
 	CALCC a;
@@ -920,7 +920,7 @@ void GetPSInfo (int channel, int *info)
 	LeaveCriticalSection (&txa[channel].calcc.cs_update);
 }
 
-PORT
+
 void SetPSReset (int channel, int reset)
 {
 	CALCC a;
@@ -930,7 +930,7 @@ void SetPSReset (int channel, int reset)
 	LeaveCriticalSection (&txa[channel].calcc.cs_update);
 }
 
-PORT
+
 void SetPSMancal (int channel, int mancal)
 {
 	EnterCriticalSection (&txa[channel].calcc.cs_update);
@@ -938,7 +938,7 @@ void SetPSMancal (int channel, int mancal)
 	LeaveCriticalSection (&txa[channel].calcc.cs_update);
 }
 
-PORT
+
 void SetPSAutomode (int channel, int automode)
 {
 	EnterCriticalSection (&txa[channel].calcc.cs_update);
@@ -946,7 +946,7 @@ void SetPSAutomode (int channel, int automode)
 	LeaveCriticalSection (&txa[channel].calcc.cs_update);
 }
 
-PORT
+
 void SetPSTurnon (int channel, int turnon)
 {
 	EnterCriticalSection (&txa[channel].calcc.cs_update);
@@ -954,7 +954,7 @@ void SetPSTurnon (int channel, int turnon)
 	LeaveCriticalSection (&txa[channel].calcc.cs_update);
 }
 
-PORT
+
 void SetPSControl (int channel, int reset, int mancal, int automode, int turnon)
 {
 	CALCC a;
@@ -967,7 +967,7 @@ void SetPSControl (int channel, int reset, int mancal, int automode, int turnon)
 	LeaveCriticalSection (&txa[channel].calcc.cs_update);
 }
 
-PORT
+
 void SetPSLoopDelay (int channel, double delay)
 {
 	CALCC a;
@@ -978,7 +978,7 @@ void SetPSLoopDelay (int channel, double delay)
 	LeaveCriticalSection (&txa[channel].calcc.cs_update);
 }
 
-PORT
+
 void SetPSMoxDelay (int channel, double delay)
 {
 	CALCC a;
@@ -989,7 +989,7 @@ void SetPSMoxDelay (int channel, double delay)
 	LeaveCriticalSection (&txa[channel].calcc.cs_update);
 }
 
-PORT
+
 double SetPSTXDelay (int channel, double delay)
 {
 	CALCC a;
@@ -1012,7 +1012,7 @@ double SetPSTXDelay (int channel, double delay)
 	return adelay;
 }
 
-PORT
+
 void SetPSHWPeak (int channel, double peak)
 {
 	CALCC a;
@@ -1022,7 +1022,7 @@ void SetPSHWPeak (int channel, double peak)
 	LeaveCriticalSection (&txa[channel].calcc.cs_update);
 }
 
-PORT
+
 void GetPSHWPeak (int channel, double* peak)
 {
 EnterCriticalSection (&txa[channel].calcc.cs_update);
@@ -1030,7 +1030,7 @@ EnterCriticalSection (&txa[channel].calcc.cs_update);
 LeaveCriticalSection (&txa[channel].calcc.cs_update);
 }
 
-PORT
+
 void GetPSMaxTX (int channel, double* maxtx)
 {
 	EnterCriticalSection (&txa[channel].calcc.cs_update);
@@ -1038,7 +1038,7 @@ void GetPSMaxTX (int channel, double* maxtx)
 	LeaveCriticalSection (&txa[channel].calcc.cs_update);
 }
 
-PORT
+
 void SetPSPtol (int channel, double ptol)
 {
 	EnterCriticalSection (&txa[channel].calcc.cs_update);
@@ -1046,7 +1046,7 @@ void SetPSPtol (int channel, double ptol)
 	LeaveCriticalSection (&txa[channel].calcc.cs_update);
 }
 
-PORT
+
 void GetPSDisp (int channel, double* x, double* ym, double* yc, double* ys, double* cm, double* cc, double* cs)
 {
 	CALCC a = txa[channel].calcc.p;
@@ -1061,7 +1061,7 @@ void GetPSDisp (int channel, double* x, double* ym, double* yc, double* ys, doub
 	LeaveCriticalSection (&a->disp.cs_disp);
 }
 
-PORT
+
 void SetPSFeedbackRate (int channel, int rate)
 {
 	CALCC a = txa[channel].calcc.p;
@@ -1090,7 +1090,7 @@ void SetPSFeedbackRate (int channel, int rate)
 	LeaveCriticalSection (&txa[channel].calcc.cs_update);
 }
 
-PORT
+
 void SetPSPinMode (int channel, int pin)
 {
 	EnterCriticalSection (&txa[channel].calcc.cs_update);
@@ -1098,7 +1098,7 @@ void SetPSPinMode (int channel, int pin)
 	LeaveCriticalSection (&txa[channel].calcc.cs_update);
 }
 
-PORT
+
 void SetPSMapMode (int channel, int map)
 {
 	EnterCriticalSection (&txa[channel].calcc.cs_update);
@@ -1106,7 +1106,7 @@ void SetPSMapMode (int channel, int map)
 	LeaveCriticalSection (&txa[channel].calcc.cs_update);
 }
 
-PORT
+
 void SetPSStabilize (int channel, int stbl)
 {
 	EnterCriticalSection (&txa[channel].calcc.cs_update);
@@ -1128,7 +1128,7 @@ void ForceShutDown (CALCC a, IQC b, int timeout)
 	a->ctrl.bs_count = 0;
 }
 
-PORT
+
 void SetPSIntsAndSpi (int channel, int ints, int spi)
 {
 	CALCC a = txa[channel].calcc.p;

@@ -52,11 +52,11 @@ typedef struct _iobf
 	CRITICAL_SECTION r2_ControlSection;
 
 	int bfo;									// block_for_output, wait until output is available before proceeding
-	HANDLE Sem_OutReady;						// count = number of 'out_size' buffers processed and available for output
-	HANDLE Sem_BuffReady;						// count = number of 'dsp_size' buffers queued for processing
+	void * Sem_OutReady;						// count = number of 'out_size' buffers processed and available for output
+	void * Sem_BuffReady;						// count = number of 'dsp_size' buffers queued for processing
 	volatile long exec_bypass;
 	volatile long flush_bypass;
-	HANDLE Sem_Flush;
+	void * Sem_Flush;
 	struct
 	{
 		int ustate;
@@ -86,10 +86,10 @@ extern void destroy_iobuffs (int channel);
 
 extern void flush_iobuffs (int channel);
 
-PORT	// double, interleaved I/Q
+ 	// double, interleaved I/Q
 void fexchange0 (int channel, double* in, double* out, int* error);	
 
-PORT	// separate I/Q buffers
+ 	// separate I/Q buffers
 extern void fexchange2 (int channel, INREAL *Iin, INREAL *Qin, OUTREAL *Iout, OUTREAL *Qout, int* error);
 
 extern void dexchange (int channel, double* in, double* out);

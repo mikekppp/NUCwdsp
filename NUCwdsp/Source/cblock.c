@@ -117,7 +117,7 @@ void setSize_cbl (CBL a, int size)
 *																										*
 ********************************************************************************************************/
 
-PORT void
+void
 SetRXACBLRun(int channel, int setit)
 {
 	EnterCriticalSection (&ch[channel].csDSP);

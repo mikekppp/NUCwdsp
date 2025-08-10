@@ -207,7 +207,7 @@ void setSize_amsq (AMSQ a, int size)
 *																										*
 ********************************************************************************************************/
 
-PORT
+
 void SetRXAAMSQRun (int channel, int run)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -215,7 +215,7 @@ void SetRXAAMSQRun (int channel, int run)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+
 void SetRXAAMSQThreshold (int channel, double threshold)
 {
 	double thresh = pow (10.0, threshold / 20.0);
@@ -225,7 +225,7 @@ void SetRXAAMSQThreshold (int channel, double threshold)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+
 void SetRXAAMSQMaxTail (int channel, double tail)
 {
 	AMSQ a;
@@ -242,7 +242,7 @@ void SetRXAAMSQMaxTail (int channel, double tail)
 *																										*
 ********************************************************************************************************/
 
-PORT
+
 void SetTXAAMSQRun (int channel, int run)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -250,7 +250,7 @@ void SetTXAAMSQRun (int channel, int run)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+
 void SetTXAAMSQMutedGain (int channel, double dBlevel)
 {	// dBlevel is negative
 	AMSQ a;
@@ -261,7 +261,7 @@ void SetTXAAMSQMutedGain (int channel, double dBlevel)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+
 void SetTXAAMSQThreshold (int channel, double threshold)
 {
 	double thresh = pow (10.0, threshold / 20.0);

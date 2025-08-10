@@ -104,7 +104,7 @@ void setSize_emphp (EMPHP a, int size)
 *																										*
 ********************************************************************************************************/
 
-PORT
+ 
 void SetTXAFMEmphPosition (int channel, int position)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -112,7 +112,7 @@ void SetTXAFMEmphPosition (int channel, int position)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAFMEmphMP (int channel, int mp)
 {
 	EMPHP a;
@@ -124,7 +124,7 @@ void SetTXAFMEmphMP (int channel, int mp)
 	}
 }
 
-PORT
+ 
 void SetTXAFMEmphNC (int channel, int nc)
 {
 	EMPHP a;
@@ -141,7 +141,7 @@ void SetTXAFMEmphNC (int channel, int nc)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetTXAFMPreEmphFreqs (int channel, double low, double high)
 {
 	EMPHP a;
@@ -260,7 +260,7 @@ void setSize_emph (EMPH a, int size)
 *																										*
 ********************************************************************************************************/
 /*	// Uncomment when needed
-PORT
+ 
 void SetTXAFMEmphPosition (int channel, int position)
 {
 	EnterCriticalSection (&ch[channel].csDSP);

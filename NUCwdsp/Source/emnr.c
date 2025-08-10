@@ -1184,7 +1184,7 @@ void setSize_emnr (EMNR a, int size)
 *																										*
 ********************************************************************************************************/
 
-PORT
+ 
 void SetRXAEMNRRun (int channel, int run)
 {
 	EMNR a = rxa[channel].emnr.p;
@@ -1199,7 +1199,7 @@ void SetRXAEMNRRun (int channel, int run)
 	}
 }
 
-PORT
+ 
 void SetRXAEMNRgainMethod (int channel, int method)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -1207,7 +1207,7 @@ void SetRXAEMNRgainMethod (int channel, int method)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetRXAEMNRnpeMethod (int channel, int method)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -1215,7 +1215,7 @@ void SetRXAEMNRnpeMethod (int channel, int method)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetRXAEMNRaeRun (int channel, int run)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -1223,7 +1223,7 @@ void SetRXAEMNRaeRun (int channel, int run)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetRXAEMNRPosition (int channel, int position)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -1232,7 +1232,7 @@ void SetRXAEMNRPosition (int channel, int position)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetRXAEMNRaeZetaThresh (int channel, double zetathresh)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -1240,7 +1240,7 @@ void SetRXAEMNRaeZetaThresh (int channel, double zetathresh)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetRXAEMNRaePsi (int channel, double psi)
 {
 	EnterCriticalSection (&ch[channel].csDSP);
@@ -1248,7 +1248,7 @@ void SetRXAEMNRaePsi (int channel, double psi)
 	LeaveCriticalSection (&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetRXAEMNRtrainZetaThresh(int channel, double thresh)
 {
 	EnterCriticalSection(&ch[channel].csDSP);
@@ -1256,7 +1256,7 @@ void SetRXAEMNRtrainZetaThresh(int channel, double thresh)
 	LeaveCriticalSection(&ch[channel].csDSP);
 }
 
-PORT
+ 
 void SetRXAEMNRtrainT2(int channel, double t2)
 {
 	EnterCriticalSection(&ch[channel].csDSP);
