@@ -8,7 +8,7 @@ extern "C" {
 #define OUTREAL   float
 #define dINREAL   float
 #define dOUTREAL  float
-#define DWORD     unsigned long
+// #define DWORD     unsigned long
 
 // analyzer
 #define DETECTOR_MODE_PEAK         0
@@ -61,12 +61,6 @@ enum txaMeterType {
 #define dMAX_M 1
 
 //
-// Take care of some "Windows specialities"
-//
-#define __stdcall 
-#define LPCRITICAL_SECTION void*
-
-//
 // To make the interface simpler, use "void *" for
 // pointers to some structures
 //
@@ -75,14 +69,6 @@ enum txaMeterType {
 #define NOB      void*
 #define RESAMPLE void*
 #define GAIN     void*
-
-extern void SetRXARNNRRun (int channel, int run);
-extern void SetRXASBNRRun (int channel, int run);
-extern void SetRXASBNRreductionAmount (int channel, float amount);
-extern void SetRXASBNRsmoothingFactor (int channel, float factor);
-extern void SetRXASBNRwhiteningFactor (int channel, float factor);
-extern void SetRXASBNRnoiseRescale (int channel, float factor);
-extern void SetRXASBNRpostFilterThreshold (int channel, float threshold);
 
 ///////////////////////////////////////////////////////////
 //                                                       //
@@ -339,12 +325,12 @@ extern  void SetTXACompressorGain (int channel, double gain);
 
 extern void create_dexp (int id, int run_dexp, int size, double* in, double* out, int rate, double dettau, double tattack, double tdecay,
 	double thold, double exp_ratio, double hyst_ratio, double attack_thresh, int nc, int wtype, double lowcut, double highcut,
-	int run_filt, int run_vox, int run_audelay, double audelay, void (__stdcall *pushvox)(int id, int active),
+	int run_filt, int run_vox, int run_audelay, double audelay, void (*pushvox)(int id, int active),
 	int antivox_run, int antivox_size, int antivox_rate, double antivox_gain, double antivox_tau);
 extern void destroy_dexp (int id);
 extern void flush_dexp (int id);
 extern void xdexp (int id);
-extern void SendCBPushDexpVox (int id, void (__stdcall *pushvox)(int id, int active));
+extern void SendCBPushDexpVox (int id, void (*pushvox)(int id, int active));
 extern void SetDEXPRun (int id, int run);
 extern void SetDEXPSize (int id, int size);
 extern void SetDEXPIOBuffers (int id, double* in, double* out);
@@ -890,7 +876,7 @@ extern void SetRXASSQLTauUnMute (int channel, double tau_unmute);
 
 extern void *malloc0 (int size);
 extern  void *NewCriticalSection();
-extern  void DestroyCriticalSection (LPCRITICAL_SECTION cs_ptr);
+extern  void DestroyCriticalSection (void *cs_ptr);
 extern void analyze_bandpass_filter (int N, double f_low, double f_high, double samplerate, int wintype, int rtype, double scale);
 extern void print_buffer_parameters (const char* filename, int channel);
 extern int create_bfcu(int id, int min_size, int max_size, double rate, double corner, int points);
@@ -948,3 +934,7 @@ extern  void SetTXALevelerTop (int channel, double maxgain);
 
 extern char* wisdom_get_status();
 extern int WDSPwisdom (char* directory);
+
+#ifdef __cplusplus
+}
+#endif

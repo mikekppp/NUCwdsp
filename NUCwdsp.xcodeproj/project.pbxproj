@@ -27,9 +27,22 @@
 		EE03398F2E47B2A0002EBE64 /* libfftw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfftw3.a; path = ../../../../opt/homebrew/lib/libfftw3.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		EE78AC8D2E4879DD008DA6BB /* Exceptions for "NUCwdsp" folder in "NUCwdsp" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			publicHeaders = (
+				Source/NUCwdsp.h,
+			);
+			target = EE0339752E47B25E002EBE64 /* NUCwdsp */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		EE0339782E47B25E002EBE64 /* NUCwdsp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				EE78AC8D2E4879DD008DA6BB /* Exceptions for "NUCwdsp" folder in "NUCwdsp" target */,
+			);
 			path = NUCwdsp;
 			sourceTree = "<group>";
 		};
