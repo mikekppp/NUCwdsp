@@ -47,7 +47,7 @@ void destroy_ammod (AMMOD a)
 
 void flush_ammod (AMMOD a)
 {
-
+	(void)a;	// nothing to do
 }
 
 void xammod (AMMOD a)
@@ -86,7 +86,8 @@ void setBuffers_ammod (AMMOD a, double* in, double* out)
 
 void setSamplerate_ammod (AMMOD a, int rate)
 {
-
+	(void)a;
+	(void)rate;
 }
 
 void setSize_ammod (AMMOD a, int size)

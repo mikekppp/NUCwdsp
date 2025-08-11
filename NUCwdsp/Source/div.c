@@ -61,7 +61,7 @@ void destroy_div (MDIV a)
 
 void flush_div (MDIV a)
 {
-
+	(void)a;
 }
 
 void xdiv (MDIV a)

@@ -708,6 +708,7 @@ void SetAntiVOXDetectorTau (int id, double tau)
 void SendAntiVOXData (int id, int nsamples, double* data)
 {
 	// note:  'nsamples' is not used as it has been previously specified
+	(void)nsamples;	// to avoid compiler warning
 	DEXP a = pdexp[id];
 	EnterCriticalSection (&a->cs_update);
 	memcpy (a->antivox_data, data, a->antivox_size * sizeof (complex));

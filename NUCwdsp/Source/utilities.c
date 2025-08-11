@@ -136,11 +136,12 @@ void print_peak_env (const char* filename, int N, double* buff, double thresh)
 	}
 	if (peak >= thresh)
 	{
-		if (file = fopen(filename, "a"))
+		file = fopen(filename, "a");
+		if (file != NULL)
 		{
-		fprintf (file, "%d\t\t%.17e\n", seqnum, peak);
-		fflush (file);
-		fclose (file);
+			fprintf (file, "%d\t\t%.17e\n", seqnum, peak);
+			fflush (file);
+			fclose (file);
 		}
 	}
 	seqnum++;
@@ -152,13 +153,17 @@ void print_peak_env_f2 (const char* filename, int N, float* Ibuff, float* Qbuff)
 	double peak = 0.0;
 	double new_peak;
 	FILE* file;
-	if (file = fopen(filename, "a"))
+	file = fopen(filename, "a");
+	if (NULL != file)
 	{
-	for (i = 0; i < N; i++)
-	{
-		new_peak = sqrt (Ibuff[i] * Ibuff[i] + Qbuff[i] * Qbuff[i]);
-		if (new_peak > peak) peak = new_peak;
-	}
+		for (i = 0; i < N; i++)
+		{
+			new_peak = sqrt (Ibuff[i] * Ibuff[i] + Qbuff[i] * Qbuff[i]);
+			if (new_peak > peak)
+			{
+				peak = new_peak;
+			}
+		}
 	fprintf (file, "%.17e\n", peak);
 	fflush (file);
 	fclose (file);
@@ -173,14 +178,17 @@ void print_iqc_values (const char* filename, int state, double env_in, double I,
 	env_out = sqrt (I * I + Q * Q);
 	if (env_out > thresh)
 	{
-		if (file = fopen(filename, "a"))
+		file = fopen(filename, "a");
+		if (NULL != file)
 		{
-		if (seqnum == 0)
-			fprintf(file, "seqnum\tstate\tenv_in\t\tenv_out\t\tym\t\tyc\t\tys\n");
-		fprintf(file, "%d\t%d\t%f\t%f\t%f\t%f\t%f\n", seqnum, state, env_in, env_out, ym, yc, ys);
-		fflush(file);
-		fclose(file);
-		seqnum++;
+			if (seqnum == 0)
+			{
+				fprintf(file, "seqnum\tstate\tenv_in\t\tenv_out\t\tym\t\tyc\t\tys\n");
+			}
+			fprintf(file, "%d\t%d\t%f\t%f\t%f\t%f\t%f\n", seqnum, state, env_in, env_out, ym, yc, ys);
+			fflush(file);
+			fclose(file);
+			seqnum++;
 		}
 	}
 }
@@ -190,7 +198,8 @@ void print_buffer_parameters (const char* filename, int channel)
 {
 	IOB a = ch[channel].iob.pc;
 	FILE* file;
-	if (file = fopen(filename, "a"))
+	file = fopen(filename, "a");
+	if (NULL != file)
 	{
 	fprintf (file, "channel            = %d\n", channel);
 	fprintf (file, "in_size            = %d\n", a->in_size);
@@ -219,7 +228,8 @@ void print_buffer_parameters (const char* filename, int channel)
 void print_meter (const char* filename, double* meter, int enum_av, int enum_pk, int enum_gain)
 {
 	FILE* file;
-	if (file = fopen(filename, "a"))
+	file = fopen(filename, "a");
+	if (NULL != file)
 	{
 	if (enum_gain >= 0)
 		fprintf (file, "%.4e\t%.4e\t%.4e\n", meter[enum_av], meter[enum_pk], meter[enum_gain]);
@@ -233,7 +243,8 @@ void print_meter (const char* filename, double* meter, int enum_av, int enum_pk,
 void print_message (const char* filename, const char* message, int p0, int p1, int p2)
 {
 	FILE* file;
-	if (file = fopen(filename, "a"))
+	file = fopen(filename, "a");
+	if (NULL != file)
 	{
 	const char* msg = message;
 	fprintf (file, "%s     %d     %d     %d\n", msg, p0, p1, p2);
@@ -245,7 +256,8 @@ void print_message (const char* filename, const char* message, int p0, int p1, i
 void print_window_gain (const char* filename, int wintype, double inv_coherent_gain, double inherent_power_gain)
 {
 	FILE* file;
-	if (file = fopen(filename, "a"))
+	file = fopen(filename, "a");
+	if (NULL != file)
 	{
 	double enb = inherent_power_gain * inv_coherent_gain * inv_coherent_gain;
 	switch (wintype)
@@ -283,7 +295,8 @@ void print_window_gain (const char* filename, int wintype, double inv_coherent_g
 void print_deviation (const char* filename, double dpmax, double rate)
 {
 	FILE* file;
-	if (file = fopen(filename, "a"))
+	file = fopen(filename, "a");
+	if (NULL != file)
 	{
 	double peak = dpmax * rate / TWOPI;
 	fprintf (file, "Peak Dev = %.4f\n", peak);
@@ -299,19 +312,20 @@ void CalccPrintSamples (void *pargs)
 	int channel = (int)(uintptr_t)pargs;
 	CALCC a = txa[channel].calcc.p;
 	FILE* file;
-	if (file = fopen("samples.txt", "w"))
+	file = fopen("samples.txt", "w");
+	if (NULL != file)
 	{
-	fprintf (file, "\n");
-	for (i = 0; i < a->nsamps; i++)
-	{
-		env_tx = sqrt(a->txs[2 * i + 0] * a->txs[2 * i + 0] + a->txs[2 * i + 1] * a->txs[2 * i + 1]);
-		env_rx = sqrt(a->rxs[2 * i + 0] * a->rxs[2 * i + 0] + a->rxs[2 * i + 1] * a->rxs[2 * i + 1]);
-		fprintf(file, "%.12f  %.12f  %.12f      %.12f  %.12f  %.12f\n", 
-			a->txs[2 * i + 0], a->txs[2 * i + 1], env_tx,
-			a->rxs[2 * i + 0], a->rxs[2 * i + 1], env_rx);
-	}
-	fflush(file);
-	fclose(file);
+		fprintf (file, "\n");
+		for (i = 0; i < a->nsamps; i++)
+		{
+			env_tx = sqrt(a->txs[2 * i + 0] * a->txs[2 * i + 0] + a->txs[2 * i + 1] * a->txs[2 * i + 1]);
+			env_rx = sqrt(a->rxs[2 * i + 0] * a->rxs[2 * i + 0] + a->rxs[2 * i + 1] * a->rxs[2 * i + 1]);
+			fprintf(file, "%.12f  %.12f  %.12f      %.12f  %.12f  %.12f\n", 
+					a->txs[2 * i + 0], a->txs[2 * i + 1], env_tx,
+					a->rxs[2 * i + 0], a->rxs[2 * i + 1], env_rx);
+		}
+		fflush(file);
+		fclose(file);
 	}
 	_endthread();
 }
@@ -324,7 +338,8 @@ void doCalccPrintSamples(int channel)
 void print_anb_parms (const char* filename, ANB a)
 {
 	FILE* file;
-	if (file = fopen(filename, "a"))
+	file = fopen(filename, "a");
+	if (NULL != file)
 	{
 	fprintf (file, "Run         = %d\n", a->run);
 	fprintf (file, "Buffer Size = %d\n", a->buffsize);

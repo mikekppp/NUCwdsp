@@ -148,6 +148,7 @@ void setBuffers_anr (ANR a, double* in, double* out)
 
 void setSamplerate_anr (ANR a, int rate)
 {
+	(void)rate;
 	flush_anr(a);
 }
 

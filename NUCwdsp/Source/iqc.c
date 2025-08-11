@@ -107,7 +107,7 @@ void destroy_iqc (IQC a)
 
 void flush_iqc (IQC a)
 {
-
+	(void)a;
 }
 
 enum _iqcstate

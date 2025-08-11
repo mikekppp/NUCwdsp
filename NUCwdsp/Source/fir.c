@@ -298,7 +298,8 @@ double *fir_read (int N, const char *filename, int rtype, double scale)
 	int i;
 	double I = 0.0, Q = 0.0;
 	double *c_impulse = (double *) malloc0 (N * sizeof (complex));
-	if (file = fopen(filename, "r"))
+	file = fopen(filename, "r");
+	if (file != NULL)
 	{
 		int error = 0;
 		for (i = 0; i < N; i++)

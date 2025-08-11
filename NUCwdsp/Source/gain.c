@@ -51,7 +51,7 @@ void destroy_gain (GAIN a)
  
 void flush_gain (GAIN a)
 {
-
+	(void)a;
 }
 
  
@@ -85,7 +85,8 @@ void setBuffers_gain (GAIN a, double* in, double* out)
 
 void setSamplerate_gain (GAIN a, int rate)
 {
-
+	(void)a;
+	(void)rate;
 }
 
 void setSize_gain (GAIN a, int size)

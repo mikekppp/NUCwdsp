@@ -39,12 +39,14 @@ john.d.melton@googlemail.com
 #if defined(linux) || defined(__APPLE__)
 
 void QueueUserWorkItem(void *function,void *context,int flags) {
+	(void)flags;
 	pthread_t t;
 	pthread_create(&t, NULL, function, context);
 	pthread_join(t, NULL);
 }
 
 void InitializeCriticalSectionAndSpinCount(pthread_mutex_t *mutex,int count) {
+	(void)count;
 	pthread_mutexattr_t mAttr;
 	pthread_mutexattr_init(&mAttr);
 #ifdef __APPLE__
@@ -87,6 +89,9 @@ int LinuxWaitForSingleObject(sem_t *sem,int ms) {
 }
 
 sem_t *LinuxCreateSemaphore(int attributes,int initial_count,int maximum_count,char *name) {
+	(void)attributes;
+	(void)maximum_count;
+	(void)name;
         sem_t *sem;
 #ifdef __APPLE__
         //
@@ -132,6 +137,7 @@ void LinuxReleaseSemaphore(sem_t* sem,int release_count, int* previous_count) {
         // so we do not bother about obtaining the previous value and 
         // storing it in *previous_count.
         //
+	(void)previous_count;
 	while(release_count>0) {
 		sem_post(sem);
 		release_count--;
@@ -139,10 +145,14 @@ void LinuxReleaseSemaphore(sem_t* sem,int release_count, int* previous_count) {
 }
 
 sem_t *CreateEvent(void* security_attributes,int bManualReset,int bInitialState,char* name) {
+	(void)bInitialState;
+	(void)security_attributes;
+	(void)bManualReset;
+	(void)name;
 	//
     // This is always called with bManualReset = bInitialState = FALSE
 	//
-        sem_t *sem;
+	sem_t *sem;
 	sem=LinuxCreateSemaphore(0,0,0,0);
 	return sem;
 }
@@ -197,7 +207,8 @@ void _endthread(void)
 	pthread_exit(NULL);
 }
 
-void SetThreadPriority(void *thread, int priority)  {
+void SetThreadPriority(void *thread, int priority)
+{
 //
 // In Linux, the scheduling priority only affects
 // real-time threads (SCHED_FIFO, SCHED_RR), so this
@@ -211,7 +222,10 @@ void SetThreadPriority(void *thread, int priority)  {
 	param.sched_priority = sched_get_priority_max(policy);
 	pthread_setschedparam(thread, policy, &param);
 */
+	(void)thread; // avoid unused parameter warning
+	(void)priority; // avoid unused parameter warning
 }
+
 
 void CloseHandle(void *hObject) {
 //

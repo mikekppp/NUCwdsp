@@ -875,7 +875,7 @@ extern void SetRXASSQLTauUnMute (int channel, double tau_unmute);
 //
 
 extern void *malloc0 (int size);
-extern  void *NewCriticalSection();
+extern  void *NewCriticalSection(void);
 extern  void DestroyCriticalSection (void *cs_ptr);
 extern void analyze_bandpass_filter (int N, double f_low, double f_high, double samplerate, int wintype, int rtype, double scale);
 extern void print_buffer_parameters (const char* filename, int channel);
@@ -896,7 +896,7 @@ extern void destroy_varsampV (void* ptr);
 // Interfaces from version.c
 //
 
-extern int GetWDSPVersion();
+extern int GetWDSPVersion(void);
 
 //
 // Interfaces from wcpAGC.c
@@ -932,7 +932,7 @@ extern  void SetTXALevelerTop (int channel, double maxgain);
 // Interfaces from wisdom.c
 //
 
-extern char* wisdom_get_status();
+extern char* wisdom_get_status(void);
 extern int WDSPwisdom (char* directory);
 
 #ifdef __cplusplus

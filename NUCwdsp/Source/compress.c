@@ -53,7 +53,7 @@ void destroy_compressor (COMPRESSOR a)
 
 void flush_compressor (COMPRESSOR a)
 {
-
+	(void)a; // suppress unused parameter warning
 }
 
 void xcompressor (COMPRESSOR a)
@@ -82,7 +82,8 @@ void setBuffers_compressor (COMPRESSOR a, double* in, double* out)
 
 void setSamplerate_compressor (COMPRESSOR a, int rate)
 {
-
+	(void)a;
+	(void)rate; // suppress unused parameter warning
 }
 
 void setSize_compressor (COMPRESSOR a, int size)

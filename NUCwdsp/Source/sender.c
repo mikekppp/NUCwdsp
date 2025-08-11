@@ -92,6 +92,7 @@ void setBuffers_sender (SENDER a, double* in)
 
 void setSamplerate_sender (SENDER a, int rate)
 {
+	(void)rate; // rate is not used in this context
 	flush_sender (a);
 }
 

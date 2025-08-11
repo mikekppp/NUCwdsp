@@ -1324,7 +1324,7 @@ void XCreateAnalyzer(	int disp,
 						char *app_data_path
 						)
 {
-
+	(void)app_data_path; // Unused parameter, but kept for compatibility
 	int i, j;
 	DP a = (DP) malloc0 (sizeof(dp));
 	pdisp[disp] = a;

@@ -49,7 +49,7 @@ void destroy_panel (PANEL a)
 
 void flush_panel (PANEL a)
 {
-
+	(void)a;	// nothing to flush
 }
 
 void xpanel (PANEL a)
@@ -108,7 +108,8 @@ void setBuffers_panel (PANEL a, double* in, double* out)
 
 void setSamplerate_panel (PANEL a, int rate)
 {
-
+	(void)rate;	// not used in this panel
+	(void)a;	// to avoid unused parameter warning
 }
 
 void setSize_panel (PANEL a, int size)

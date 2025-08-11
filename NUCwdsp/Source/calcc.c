@@ -839,6 +839,8 @@ void pscc (int channel, int size, double* tx, double* rx)
 
 void psccF (int channel, int size, float *Itxbuff, float *Qtxbuff, float *Irxbuff, float *Qrxbuff, int mox, int solidmox)
 {
+	(void)mox;
+	(void)solidmox;
 	int i;
 	CALCC a;
 	EnterCriticalSection (&txa[channel].calcc.cs_update);

@@ -143,6 +143,7 @@ void setBuffers_siphon (SIPHON a, double* in)
 
 void setSamplerate_siphon (SIPHON a, int rate)
 {
+	(void)rate;  // rate is not used in this implementation
 	flush_siphon (a);
 }
 

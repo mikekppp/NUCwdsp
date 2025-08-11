@@ -148,6 +148,8 @@ void setBuffers_anf (ANF a, double* in, double* out)
 
 void setSamplerate_anf (ANF a, int rate)
 {
+	(void)rate; // Not used in ANF
+	// ANF does not depend on sample rate
 	flush_anf (a);
 }
 
