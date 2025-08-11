@@ -86,7 +86,7 @@ extern  void SetTXAiqcStart (int channel, double* cm, double* cc, double* cs);
 
 extern  void SetTXAiqcEnd (int channel);
 
-void GetTXAiqcDogCount (int channel, int* count);
+void GetTXAiqcDogCount (int channel, long* count);
 
 void SetTXAiqcDogCount (int channel, int  count);
 

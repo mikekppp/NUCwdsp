@@ -26,7 +26,10 @@ warren@wpratt.com
 
 #ifndef _txa_h
 #define _txa_h
-#include "comm.h"
+#include "wdsp_comm.h"
+#include "bandpass.h"
+#include "emph.h"
+#include "eq.h"
 
 enum txaMode
 {

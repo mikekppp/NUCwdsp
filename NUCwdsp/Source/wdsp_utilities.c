@@ -25,7 +25,8 @@ warren@wpratt.com
 */
 
 #define _CRT_SECURE_NO_WARNINGS
-#include "comm.h"
+#include "wdsp_comm.h"
+#include "wdsp_utilities.h"
 
 /********************************************************************************************************
 *																										*

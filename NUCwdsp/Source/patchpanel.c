@@ -24,7 +24,7 @@ warren@wpratt.com
 
 */
 
-#include "comm.h"
+#include "wdsp_comm.h"
 
 PANEL create_panel (int channel, int run, int size, double* in, double* out, double gain1, double gain2I, double gain2Q, int inselect, int copy)
 {

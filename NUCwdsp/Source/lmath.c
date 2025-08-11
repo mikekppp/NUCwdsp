@@ -24,7 +24,7 @@ warren@wpratt.com
 
 */
 
-#include "comm.h"
+#include "wdsp_comm.h"
 
 void dR (int n, double* r, double* y, double* z)
 {

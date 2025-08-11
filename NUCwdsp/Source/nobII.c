@@ -24,7 +24,7 @@ warren@wpratt.com
 
 */
 
-#include "comm.h"
+#include "wdsp_comm.h"
 
 #define MAX_ADV_SLEW_TIME			(0.002)
 #define MAX_ADV_TIME				(0.002)

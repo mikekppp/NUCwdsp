@@ -24,7 +24,7 @@ warren@wpratt.com
 
 */
 
-#include "comm.h"
+#include "wdsp_comm.h"
 
 AMMOD create_ammod (int run, int mode, int size, double* in, double* out, double c_level)
 {

@@ -1,4 +1,4 @@
-#include "comm.h"
+#include "wdsp_comm.h"
 
  
 int GetWDSPVersion(void)

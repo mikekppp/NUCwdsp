@@ -26,7 +26,10 @@ warren@wpratt.com
 
 #ifndef _rxa_h
 #define _rxa_h
-#include "comm.h"
+#include "wdsp_comm.h"
+#include "bandpass.h"
+#include "emnr.h"
+#include "eq.h"
 
 enum rxaMode
 {

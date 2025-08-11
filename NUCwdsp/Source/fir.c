@@ -24,7 +24,7 @@ warren@pratt.one
 */
 
 #define _CRT_SECURE_NO_WARNINGS
-#include "comm.h"
+#include "wdsp_comm.h"
 
 double* fftcv_mults (int NM, double* c_impulse)
 {

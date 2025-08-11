@@ -24,7 +24,7 @@ warren@wpratt.com
 
 */
 
-#include "comm.h"
+#include "wdsp_comm.h"
 
 void size_iqc (IQC a)
 {
@@ -298,7 +298,7 @@ void SetTXAiqcEnd (int channel)
 	InterlockedBitTestAndReset (&txa[channel].iqc.p1->run, 0);
 }
 
-void GetTXAiqcDogCount (int channel, int* count)
+void GetTXAiqcDogCount (int channel, long* count)
 {
 	IQC a = txa[channel].iqc.p1;
 	EnterCriticalSection (&a->dog.cs);

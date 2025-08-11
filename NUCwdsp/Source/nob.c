@@ -24,7 +24,7 @@ warren@wpratt.com
 
 */
 
-#include "comm.h"
+#include "wdsp_comm.h"
 
 #define MAX_TAU			(0.002)		// maximum transition time, signal<->zero
 #define MAX_ADVTIME		(0.002)		// maximum deadtime (zero output) in advance of detected noise

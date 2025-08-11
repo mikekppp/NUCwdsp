@@ -28,7 +28,7 @@ john.d.melton@googlemail.com
 #include <errno.h>
 
 #include "linux_port.h"
-#include "comm.h"
+#include "wdsp_comm.h"
 
 /********************************************************************************************************
 *													*
@@ -72,13 +72,13 @@ void DeleteCriticalSection(pthread_mutex_t *mutex) {
 	pthread_mutex_destroy(mutex);
 }
 
-int LinuxWaitForSingleObject(sem_t *sem,int ms) {
+int LinuxWaitForSingleObject(sem_t *sem, long ms) {
 	int result=0;
 	if(ms==INFINITE) {
 		// wait for the lock
 		result=sem_wait(sem);
 	} else {
-        for (int i = 0; i < ms; i++) {
+        for (long i = 0; i < ms; i++) {
 		result=sem_trywait(sem);
           if (result == 0) break;
           Sleep(1);

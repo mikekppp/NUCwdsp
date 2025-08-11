@@ -24,7 +24,8 @@ warren@wpratt.com
 
 */
 
-#include "comm.h"
+#include "wdsp_comm.h"
+#include "div.h"
 
 #define MAX_NR	(8)		// maximum number of receivers to mix
 

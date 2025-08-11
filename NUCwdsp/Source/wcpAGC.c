@@ -30,7 +30,7 @@ Santa Cruz, CA  95060
 
 */
 
-#include "comm.h"
+#include "wdsp_comm.h"
 
 void calc_wcpagc (WCPAGC a)
 {

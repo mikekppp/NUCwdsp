@@ -24,7 +24,7 @@ warren@wpratt.com
 
 */
 
-#include "comm.h"
+#include "wdsp_comm.h"
 
 MAV create_mav (int ringmin, int ringmax, double nom_value)
 {
@@ -467,7 +467,7 @@ void xrmatchOUT (void* b, double* out)
 }
 
  
-void getRMatchDiags (void* b, int* underflows, int* overflows, double* var, int* ringsize, int* nring)
+void getRMatchDiags (void* b, long* underflows, long* overflows, double* var, int* ringsize, int* nring)
 {
 	RMATCH a = (RMATCH)b;
 	*underflows = InterlockedAnd (&a->underflows, 0xFFFFFFFF);

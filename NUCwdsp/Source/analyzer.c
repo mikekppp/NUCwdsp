@@ -26,7 +26,7 @@ warren@wpratt.com
 
 */
 
-#include "comm.h"
+#include "wdsp_comm.h"
 
 DP pdisp[dMAX_DISPLAYS];
 
@@ -35,8 +35,9 @@ double bessi0(double x)
 	double ax,ans;
 	double y;
 
-	if ((ax=fabs(x)) < 3.75) {
-		y = x / 3.75,  y = y * y;
+	if ((ax = fabs(x)) < 3.75) {
+		y = x / 3.75;
+		y = y * y;
 		ans = 1.0 + y * (3.5156229 + y * (3.0899424 +  y* (1.2067492
 			+ y * (0.2659732 + y * (0.360768e-1 + y * 0.45813e-2)))));
 	} else {

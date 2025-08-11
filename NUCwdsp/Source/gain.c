@@ -24,7 +24,7 @@ warren@wpratt.com
 
 */
 
-#include "comm.h"
+#include "wdsp_comm.h"
 
  
 GAIN create_gain (int run, int* prun, int size, double* in, double* out, double Igain, double Qgain)

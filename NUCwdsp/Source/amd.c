@@ -24,7 +24,10 @@ warren@wpratt.com
 
 */
 
-#include "comm.h"
+#include "wdsp_comm.h"
+#include "amd.h"
+#include "ammod.h"
+#include "wdsp_utilities.h"
 
 AMD create_amd
 	(

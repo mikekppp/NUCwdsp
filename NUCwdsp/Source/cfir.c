@@ -24,7 +24,7 @@ warren@wpratt.com
 
 */
 #define _CRT_SECURE_NO_DEPRECATE
-#include "comm.h"
+#include "wdsp_comm.h"
 
 void calc_cfir (CFIR a)
 {

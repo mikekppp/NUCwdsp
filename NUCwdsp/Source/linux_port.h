@@ -87,7 +87,7 @@ void DeleteCriticalSection(pthread_mutex_t *mutex);
 
 sem_t *LinuxCreateSemaphore(int attributes,int initial_count,int maximum_count,char *name);
 
-int LinuxWaitForSingleObject(sem_t *sem,int x);
+int LinuxWaitForSingleObject(sem_t *sem, long x);
 
 void LinuxReleaseSemaphore(sem_t *sem,int release_count, int* previous_count);
 

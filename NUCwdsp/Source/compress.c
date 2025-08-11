@@ -27,7 +27,7 @@ in the January 2010 issue of RadCom magazine.
 
 */
 
-#include "comm.h"
+#include "wdsp_comm.h"
 
 COMPRESSOR create_compressor (
 				int run,

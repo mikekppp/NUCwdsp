@@ -24,7 +24,7 @@ warren@wpratt.com
 
 */
 
-#include "comm.h"
+#include "wdsp_comm.h"
 
 DELAY create_delay (int run, int size, double* in, double* out, int rate, double tdelta, double tdelay)
 {

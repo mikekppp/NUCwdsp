@@ -27,7 +27,7 @@ mw0lge@grange-lane.co.uk
 */
 
 #define _CRT_SECURE_NO_WARNINGS
-#include "comm.h"
+#include "wdsp_comm.h"
 
 /********************************************************************************************************
 *																										*

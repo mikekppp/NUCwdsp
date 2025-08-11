@@ -25,24 +25,19 @@ warren@wpratt.com
 */
 
 #if defined(linux) || defined(__APPLE__)
+
 #include <stdlib.h>
 #include <pthread.h>
 #include <semaphore.h>
 #include <string.h>
 #include "linux_port.h"
+
 #endif
 
-#ifdef _WIN32
-#include <Windows.h>
-#include <process.h>
-#include <intrin.h>
-#endif
+
 #include <math.h>
 #include <stdint.h>
 #include <time.h>
-#ifdef _WIN32
-#include <avrt.h>
-#endif
 #include "fftw3.h"
 
 #include "amd.h"
@@ -51,7 +46,7 @@ warren@wpratt.com
 #include "analyzer.h"
 #include "anf.h"
 #include "anr.h"
-#include "bandpass.h"
+// #include "bandpass.h"
 #include "calcc.h"
 #include "cblock.h"
 #include "cfcomp.h"
@@ -60,11 +55,11 @@ warren@wpratt.com
 #include "compress.h"
 #include "delay.h"
 #include "dexp.h"
-#include "div.h"
-#include "eer.h"
-#include "emnr.h"
-#include "emph.h"
-#include "eq.h"
+// #include "div.h"
+// #include "eer.h"
+// #include "emnr.h"
+// #include "emph.h"
+// #include "eq.h"
 #include "fcurve.h"
 #include "fir.h"
 #include "firmin.h"
@@ -98,7 +93,7 @@ warren@wpratt.com
 #include "ssql.h"
 #include "syncbuffs.h"
 #include "TXA.h"
-#include "utilities.h"
+#include "wdsp_utilities.h"
 #include "varsamp.h"
 #include "wcpAGC.h"
 

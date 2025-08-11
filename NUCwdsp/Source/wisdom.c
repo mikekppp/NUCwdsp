@@ -25,7 +25,7 @@ warren@wpratt.com
 */
 
 #define _CRT_SECURE_NO_WARNINGS
-#include "comm.h"
+#include "wdsp_comm.h"
 
 static char status[128];
 

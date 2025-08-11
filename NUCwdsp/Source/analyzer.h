@@ -26,7 +26,7 @@ warren@wpratt.com
 */
 #ifndef _analyzer_h
 #define _analyzer_h
-#include "comm.h"
+#include "wdsp_comm.h"
 
 typedef struct _dp
 {

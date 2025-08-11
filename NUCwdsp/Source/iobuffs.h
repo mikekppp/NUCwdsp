@@ -26,7 +26,7 @@ warren@wpratt.com
 
 #ifndef _iobuffs_h
 #define _iobuffs_h
-#include "comm.h"
+#include "wdsp_comm.h"
 typedef struct _iobf
 {
 	int   channel;

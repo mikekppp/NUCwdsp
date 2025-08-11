@@ -25,7 +25,7 @@ warren@wpratt.com
 */
 
 #define _CRT_SECURE_NO_WARNINGS
-#include "comm.h"
+#include "wdsp_comm.h"
 
 void size_calcc (CALCC a)
 {	// for change in ints or spi
@@ -139,7 +139,7 @@ CALCC create_calcc (int channel, int runcal, int size, int rate, int ints, int s
 	a->npsamps = npsamps;
 	a->alpha = alpha;
 
-	a->info  = (int *) malloc0 (16 * sizeof (int));
+	a->info  = (long *) malloc0 (16 * sizeof (int));
 	a->binfo = (int *) malloc0 (16 * sizeof (int));
 
 	a->ctrl.state = 0;

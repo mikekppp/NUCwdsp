@@ -24,7 +24,10 @@ warren@wpratt.com
 
 */
 
-#include "comm.h"
+#include "wdsp_comm.h"
+#include "amd.h"
+#include "bandpass.h"
+
 
 struct _rxa rxa[MAX_CHANNELS];
 

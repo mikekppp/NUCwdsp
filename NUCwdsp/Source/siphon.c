@@ -24,7 +24,7 @@ warren@pratt.one
 
 */
 
-#include "comm.h"
+#include "wdsp_comm.h"
 
 void build_window (SIPHON a)
 {

@@ -132,7 +132,7 @@ extern void setRMatchNomOutrate (void* ptr, int nom_outrate);
 
 extern void setRMatchRingsize (void* ptr, int ringsize);
 
-extern void getRMatchDiags (void* b, int* underflows, int* overflows, double* var, int* ringsize, int* nring);
+extern void getRMatchDiags (void* b, long* underflows, long* overflows, double* var, int* ringsize, int* nring);
 
 extern void resetRMatchDiags (void* b);
 

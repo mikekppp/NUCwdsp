@@ -26,7 +26,7 @@ warren@pratt.one
 
 #ifndef _syncbuffs_h
 #define _syncbuffs_h
-#include "comm.h"
+#include "wdsp_comm.h"
 
 #define SYNCB_MULT		(3)						
 typedef struct _syncb

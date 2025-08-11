@@ -67,7 +67,7 @@ typedef struct _calcc
 	double* rxs;
 	double* txs;
 	double ptol;
-	int* info;
+	long* info;
 	int* binfo;
 	double txdel;
 	BLDR ccbld;

@@ -28,7 +28,7 @@ warren@wpratt.com
 // "Controlled Envelope Single Sideband" by David L. Hershberger, W9GR, in
 // the November/December 2014 issue of QEX.
 
-#include "comm.h"
+#include "wdsp_comm.h"
 
 void calc_osctrl (OSCTRL a)
 {

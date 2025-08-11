@@ -24,7 +24,8 @@ warren@wpratt.com
 
 */
 
-#include "comm.h"
+#include "wdsp_comm.h"
+#include "eq.h"
 
 int fEQcompare (const void * a, const void * b)
 {

@@ -26,7 +26,7 @@ warren@wpratt.com
 
 #ifndef _setupchannel_h
 #define _setupchannel_h
-#include "comm.h"
+#include "wdsp_comm.h"
 
 struct _ch
 {
